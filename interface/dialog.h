@@ -14,6 +14,7 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
+    void showImageChanged();
 
 private:
     Ui::Dialog *ui;
@@ -36,3 +37,4 @@ protected slots:
 };
 
 #endif // DIALOG_H
+
