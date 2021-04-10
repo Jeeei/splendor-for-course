@@ -26,15 +26,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         gameinterface.cpp \
-    dialog.cpp
+    dialog.cpp \
+    dialog2.cpp
 
 HEADERS += \
         gameinterface.h \
-    dialog.h
+    dialog.h \
+    dialog2.h
 
 FORMS += \
         gameinterface.ui \
-    dialog.ui
+    dialog.ui \
+    dialog2.ui
 
 RESOURCES += \
     pictures.qrc
+
