@@ -3,41 +3,50 @@ using namespace std;
 
 Table::Table()
 {
-	//½Ó¿ªÊ¼ÓÎÏ·²Ëµ¥
-	for (int i = 0; i < 3; i++)
+	//æ¥å¼€å§‹æ¸¸æˆèœå•
+	for (int i = 0; i < 3; i++)//å¡å¤´ä»éœ€æ¥å…¥åˆ°é“¾è¡¨
 		CardHead[i] = NULL;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)//åˆå§‹åŒ–åœºä¸Šå‘å±•å¡æ•°ç»„
 		for (int j = 0; j < 4; j++)
 			OpenCard[i][j] = NULL;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)//åˆå§‹åŒ–è´µæ—å¡æ•°ç»„
 		Nobles[i] = NULL;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)//åˆå§‹åŒ–ç©å®¶æŒ‡é’ˆ
 		Players[i] = NULL;
 }
-//È±¸ö~Table()
-bool Table::Start()//ÓëÓÃ»§½»»¥³õÊ¼»¯ ÏÈÉú³É2¸öPlayers²¢µ÷ÓÃInit ºóĞø²¹³äÆäËûÑ¡Ïî
+Table::~Table()
+{
+	for (int i = 0; i < 4; i++)//åˆ é™¤ç©å®¶
+	{
+		if (Players[i] != NULL)
+			delete Players[i];
+	}
+	for (int i = 0; i < 3; i++)//åˆ é™¤åœºä¸Šå‘å±•å¡
+		for (int j = 0; j < 4; j++)
+		{
+			if (OpenCard[i][j] != NULL)
+				delete OpenCard[i][j];
+		}
+	for (int i = 0; i < 3; i++)//åˆ é™¤è´µæ—å¡
+		delete Nobles[i];
+}
+bool Table::Start()//ä¸ç”¨æˆ·äº¤äº’åˆå§‹åŒ– å…ˆç”Ÿæˆ2ä¸ªPlayerså¹¶è°ƒç”¨Init åç»­è¡¥å……å…¶ä»–é€‰é¡¹
 {
 	Players[0] = new Player;
 	Players[1] = new Player;
 	if (Init())
 	{
-		int result = Round();//µ÷ÓÃRound½øĞĞÓÎÏ·,²¢¼ì²âÓÎÏ·½á¹û
-		if (result)//¼ì²éÊÇ·ñÕı³£½áÊøÓÎÏ·
-		{
-			delete Players[0];
-			delete Players[1];
-			for (int i = 0; i < 3; i++)
-				delete Nobles[i];
+		int result = Round();//è°ƒç”¨Roundè¿›è¡Œæ¸¸æˆ,å¹¶æ£€æµ‹æ¸¸æˆç»“æœ
+		if (result)//æ£€æŸ¥æ˜¯å¦æ­£å¸¸ç»“æŸæ¸¸æˆ
 			return true;
-		}
 		else return false;
 	}
 }
-bool Table::Init()//³õÊ¼»¯º¯Êı£¬°üÀ¨±¦Ê¯Êı£¬·¢Õ¹¿¨£¬¹ó×å¿¨µÄ³õÊ¼»¯
+bool Table::Init()//åˆå§‹åŒ–å‡½æ•°ï¼ŒåŒ…æ‹¬å®çŸ³æ•°ï¼Œå‘å±•å¡ï¼Œè´µæ—å¡çš„åˆå§‹åŒ–
 {
-	for (int i = 0; i < 6; i++)//³õÊ¼»¯±¦Ê¯Êı
+	for (int i = 0; i < 6; i++)//åˆå§‹åŒ–å®çŸ³æ•°
 		Diamonds[i] = 5;
-	for (int i = 0; i < 3; i++)//³õÊ¼»¯·¢Õ¹¿¨
+	for (int i = 0; i < 3; i++)//åˆå§‹åŒ–å‘å±•å¡
 		for (int j = 0; j < 4; j++)
 		{
 			if (OpenCard[i][j] == NULL)
@@ -50,117 +59,117 @@ bool Table::Init()//³õÊ¼»¯º¯Êı£¬°üÀ¨±¦Ê¯Êı£¬·¢Õ¹¿¨£¬¹ó×å¿¨µÄ³õÊ¼»¯
 	}
 	return true;
 }
-bool Table::CreateCard(int lv, int pos)//Éú³É·¢Õ¹¿¨,lvºÍcoordÎª¶şÎ¬Êı×é×ø±ê
+bool Table::CreateCard(int lv, int pos)//ç”Ÿæˆå‘å±•å¡,lvå’Œcoordä¸ºäºŒç»´æ•°ç»„åæ ‡
 {
-	if (lv > 0 && lv < 3 && pos > 0 && pos < 4)//¼ì²é×ø±êÓĞĞ§
+	if (lv > 0 && lv < 3 && pos > 0 && pos < 4)//æ£€æŸ¥åæ ‡æœ‰æ•ˆ
 	{
 		OpenCard[lv][pos] = new Card;
 		return true;
 	}
 	else return false;
 }
-int Table::Operate(Player* player)//¼ÓÈëoperateº¯Êı×÷Îª½Ó¿Ú,½ÓÊÕÍæ¼ÒµÄ²Ù×÷£¬µ÷ÓÃ²»Í¬µÄº¯Êı»òÕß½áÊø»ØºÏ
+int Table::Operate(Player* player)//åŠ å…¥operateå‡½æ•°ä½œä¸ºæ¥å£,æ¥æ”¶ç©å®¶çš„æ“ä½œï¼Œè°ƒç”¨ä¸åŒçš„å‡½æ•°æˆ–è€…ç»“æŸå›åˆ
 {
-	//½Ó¿Ú£¬ÏÔÊ¾½çÃæ
+	//æ¥å£ï¼Œæ˜¾ç¤ºç•Œé¢
 
-	//Ó¦ÓĞÑ¡Ôñ²Ëµ¥
+	//åº”æœ‰é€‰æ‹©èœå•
 	/*Take(Players[i]);
 	Buy(Players[i]);
 	Reserve(Players[i]);
-	ÒÔ¼°½áÊø»ØºÏµÄÑ¡Ïî*/
+	ä»¥åŠç»“æŸå›åˆçš„é€‰é¡¹*/
 
 }
-bool Table::Take(Player* player)//µ÷ÓÃÏàÓ¦Íæ¼ÒµÄÏàÓ¦º¯Êı,¼ÇÂ¼ÄÃµÄ´ÎÊıºÍ¹æÔò¼ì²é
+bool Table::Take(Player* player)//è°ƒç”¨ç›¸åº”ç©å®¶çš„ç›¸åº”å‡½æ•°,è®°å½•æ‹¿çš„æ¬¡æ•°å’Œè§„åˆ™æ£€æŸ¥
 {
-	//½Ó¿Ú,½ÓÊÕËùÑ¡ÔñµÄ±¦Ê¯ÑÕÉ«ÒÔ¼°ÊıÁ¿,±£Ö¤°´¹æÔòÈ¡
-	int diamond[6] = { 0 };//´¢´æÒªÈ¡µÄ±¦Ê¯
-	//player->TotalDiamonds()±íÊ¾Íæ¼ÒÓµÓĞµÄ±¦Ê¯Êı
+	//æ¥å£,æ¥æ”¶æ‰€é€‰æ‹©çš„å®çŸ³é¢œè‰²ä»¥åŠæ•°é‡,ä¿è¯æŒ‰è§„åˆ™å–
+	int diamond[6] = { 0 };//å‚¨å­˜è¦å–çš„å®çŸ³
+	//player->TotalDiamonds()è¡¨ç¤ºç©å®¶æ‹¥æœ‰çš„å®çŸ³æ•°
 	player->Take(diamond);
 	return true;
-	//¿ÉÒÔÔö¼ÓÈ¡ÏûÑ¡Ïîreturn false;
+	//å¯ä»¥å¢åŠ å–æ¶ˆé€‰é¡¹return false;
 }
-bool Table::Buy(Player* player, int lv, int pos)//Âò³¡ÉÏ·­¿ªµÄ¿¨,½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄ¿¨µÄ¶şÎ¬Êı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄBuy()
+bool Table::Buy(Player* player, int lv, int pos)//ä¹°åœºä¸Šç¿»å¼€çš„å¡,æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å¡çš„äºŒç»´æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„Buy()
 {
-	if (player->CanBuy(OpenCard[lv][pos]))//Èç¹ûËû¿ÉÒÔÂò
+	if (player->CanBuy(OpenCard[lv][pos]))//å¦‚æœä»–å¯ä»¥ä¹°
 	{
-		player->Buy(OpenCard[lv][pos]);//ÄÇ¾ÍÂò
+		player->Buy(OpenCard[lv][pos]);//é‚£å°±ä¹°
 		delete OpenCard[lv][pos];
 		CreateCard(lv, pos);
 		return true;
 	}
 	else
 	{
-		//ĞèÒªÊä³öÂò²»ÆğµÄÌáÊ¾
+		//éœ€è¦è¾“å‡ºä¹°ä¸èµ·çš„æç¤º
 		return false;
 	}
 }
-bool Table::Buy(Player* player, int order)//Âò×Ô¼º¿ÛÁôµÄ¿¨,½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄÒÑ¿ÛÁô¿¨µÄÊı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄBuy()
+bool Table::Buy(Player* player, int order)//ä¹°è‡ªå·±æ‰£ç•™çš„å¡,æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å·²æ‰£ç•™å¡çš„æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„Buy()
 {
-	if (player->CanBuy(player->Reserved[order]))//Èç¹ûËû¿ÉÒÔÂò
+	if (player->CanBuy(player->Reserved[order]))//å¦‚æœä»–å¯ä»¥ä¹°
 	{
-		player->Buy(player->Reserved[order]);//ÄÇ¾ÍÂò
+		player->Buy(player->Reserved[order]);//é‚£å°±ä¹°
 		delete player->Reserved[order];
 		player->Reserved[order] = NULL;
 		return true;
 	}
 	else
 	{
-		//ĞèÒªÊä³öÂò²»ÆğµÄÌáÊ¾
+		//éœ€è¦è¾“å‡ºä¹°ä¸èµ·çš„æç¤º
 		return false;
 	}
 }
-bool Table::Reserve(Player* player, int lv, int pos)//½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄ¿¨µÄ¶şÎ¬Êı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄÏàÓ¦º¯Êı
+bool Table::Reserve(Player* player, int lv, int pos)//æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å¡çš„äºŒç»´æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„ç›¸åº”å‡½æ•°
 {
-	if (player->CanReserve())//¼ì²éÊÇ·ñÄÜ¹»¿ÛÁô¿¨
+	if (player->CanReserve())//æ£€æŸ¥æ˜¯å¦èƒ½å¤Ÿæ‰£ç•™å¡
 	{
 		bool GoldLeft = 0;
 		if (Diamonds[Gold] > 0)
 			GoldLeft = 1;
-		if (player->Reserve(OpenCard[lv][pos], GoldLeft))//¿Û¿¨
+		if (player->Reserve(OpenCard[lv][pos], GoldLeft))//æ‰£å¡
 			Diamonds[Gold]--;
 		OpenCard[lv][pos] = NULL;
-		CreateCard(lv, pos);//ÔÚ¸ÃÎ»ÖÃÉú³É·¢Õ¹¿¨
+		CreateCard(lv, pos);//åœ¨è¯¥ä½ç½®ç”Ÿæˆå‘å±•å¡
 		return true;
 	}
 	else
 	{
-		//ĞèÒªÊä³ö¿ÛÁô¿¨ÒÑÂúµÄÌáÊ¾
+		//éœ€è¦è¾“å‡ºæ‰£ç•™å¡å·²æ»¡çš„æç¤º
 		return false;
 	}
 }
-int Table::ChooseNoble(Player* player, int* canvisit)//Ñ¡Ôñ¹ó×åµ½·Ã
+int Table::ChooseNoble(Player* player, int* canvisit)//é€‰æ‹©è´µæ—åˆ°è®¿
 {
-	//½Ó¿Ú,½ÓÊÕ×îÖÕÑ¡ÔñµÄ¹ó×å¿¨µÄË³Ğò,²¢°Ñorder×÷Îª·µ»ØÖµ
-	while (*canvisit != 0)//·ÇÁãÄÚÈİ±íÊ¾Êı×éÖĞ¿ÉÒÔÑ¡ÔñµÄ¹ó×åÎ»ÖÃ
+	//æ¥å£,æ¥æ”¶æœ€ç»ˆé€‰æ‹©çš„è´µæ—å¡çš„é¡ºåº,å¹¶æŠŠorderä½œä¸ºè¿”å›å€¼
+	while (*canvisit != 0)//éé›¶å†…å®¹è¡¨ç¤ºæ•°ç»„ä¸­å¯ä»¥é€‰æ‹©çš„è´µæ—ä½ç½®
 	{
-		//±íÊ¾Õâ¸ö¹ó×å¿ÉÑ¡
+		//è¡¨ç¤ºè¿™ä¸ªè´µæ—å¯é€‰
 
-		//ÈôÑ¡Ôñ,Ôòreturn (*canvisit);¼´Õâ¸ö¹ó×åµÄÎ»ÖÃ
+		//è‹¥é€‰æ‹©,åˆ™return (*canvisit);å³è¿™ä¸ªè´µæ—çš„ä½ç½®
 	}
 }
-int Table::Round()//»ØºÏ½øĞĞº¯Êı£¬¶ÔÃ¿¸öÍæ¼Òµ÷ÓÃOperate()£¬²¢ÔÚÖ®ºó½øĞĞÏàÓ¦ÅĞ¶Ï²Ù×÷
+int Table::Round()//å›åˆè¿›è¡Œå‡½æ•°ï¼Œå¯¹æ¯ä¸ªç©å®¶è°ƒç”¨Operate()ï¼Œå¹¶åœ¨ä¹‹åè¿›è¡Œç›¸åº”åˆ¤æ–­æ“ä½œ
 {
-	int end = 0;//±íÊ¾ÓÎÏ·ÊÇ·ñ´ïµ½½áÊøÌõ¼ş
+	int end = 0;//è¡¨ç¤ºæ¸¸æˆæ˜¯å¦è¾¾åˆ°ç»“æŸæ¡ä»¶
 	while (!end)
 	{
-		for (int i = 0; i < 2; i++)//Íæ¼ÒÈËÊı
+		for (int i = 0; i < 2; i++)//ç©å®¶äººæ•°
 		{
 
 			Operate(Players[i]);
-			//ÅĞ¶Ï¹ó×å
-			int count = 0;//¼ÇÂ¼¿ÉÒÔµ½·ÃµÄ¹ó×åÊı
-			int CanVisit[3] = { 0 };//´¢´æ¿ÉÑ¡Ôñ¹ó×åµÄÎ»ÖÃ
+			//åˆ¤æ–­è´µæ—
+			int count = 0;//è®°å½•å¯ä»¥åˆ°è®¿çš„è´µæ—æ•°
+			int CanVisit[3] = { 0 };//å‚¨å­˜å¯é€‰æ‹©è´µæ—çš„ä½ç½®
 			for (int j = 0; j < 3; j++)
 			{
 				if (Nobles[j]->CanVisit(Players[i]))
 				{
-					CanVisit[count] = j;//°Ñ¹ó×åµÄÎ»ÖÃĞÅÏ¢´æµ½Êı×éÖĞ
+					CanVisit[count] = j;//æŠŠè´µæ—çš„ä½ç½®ä¿¡æ¯å­˜åˆ°æ•°ç»„ä¸­
 					count++;
 				}
 			}
-			if (count >= 2)//¿ÉÒÔÑ¡Ôñ¹ó×å
+			if (count >= 2)//å¯ä»¥é€‰æ‹©è´µæ—
 				Players[i]->NobleCome(Nobles[ChooseNoble(Players[i], CanVisit)]);
-			else //Ö»ÓĞÒ»¸ö¹ó×å,²»ÄÜÑ¡Ôñ
+			else //åªæœ‰ä¸€ä¸ªè´µæ—,ä¸èƒ½é€‰æ‹©
 			{
 				for (int j = 0; j < 3; j++)
 				{
@@ -174,7 +183,7 @@ int Table::Round()//»ØºÏ½øĞĞº¯Êı£¬¶ÔÃ¿¸öÍæ¼Òµ÷ÓÃOperate()£¬²¢ÔÚÖ®ºó½øĞĞÏàÓ¦ÅĞ¶Ï²
 			if (Players[i]->Rep >= 15)
 				end = 1;
 		}
-		//½áËã
+		//ç»“ç®—
 	}
-	return 1;//Õı³£½áÊø
+	return 1;//æ­£å¸¸ç»“æŸ
 }
