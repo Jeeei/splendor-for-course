@@ -16,8 +16,10 @@ gameInterface::gameInterface(QWidget *parent) :
 
     dialog = new Dialog(this);//购买窗口
     dialog->setModal(false);
+    dialog2=new Dialog2(this);//拿币窗口
     connect(dialog, SIGNAL(DialogPurchase()), SLOT(DialogPurchaseSlot()));// 把子窗口的信号连接到父窗口
     connect(dialog,SIGNAL(DialogCancel()),SLOT(DialogCancelSlot()));
+    connect(dialog2,SIGNAL(dialog2OK()),SLOT(dialog2OKSlot()));
 }
 
 gameInterface::~gameInterface()
@@ -34,6 +36,18 @@ void gameInterface::DialogPurchaseSlot()
 void gameInterface:: DialogCancelSlot()
 {
     dialog->close();
+}
+void gameInterface::dialog2OKSlot()
+{
+    dialog2->close();
+    //在此处添加自己的金币情况
+}
+
+void gameInterface::on_toolButton_clicked()
+{
+    //"我要拿币"
+    dialog2->show();
+    dialog2->setWindowFlags(dialog2->windowFlags() | Qt::WindowStaysOnTopHint);
 }
 
 void gameInterface::on_gold_num_textChanged()
@@ -73,66 +87,97 @@ void gameInterface::on_card1_1_clicked()
     //background-color: rgba(255, 255, 224, 10%)；//半透明的样式表代码
     //卡1的点击回馈
     dialog->show();
-
-    //ui->card1_1->setStyleSheet("border-image:url(:/images/card/blue-high/5.png)");
+    dialog->showImageChanged();
 }
 
 void gameInterface::on_card1_2_clicked(bool checked)
 {
     //卡2的点击回馈
+    dialog->show();
+
 }
 
 void gameInterface::on_card1_3_clicked(bool checked)
 {
     //卡3的点击回馈
+    dialog->show();
 }
 
 
 void gameInterface::on_card1_4_clicked()
 {
     //卡4的点击回馈
+    dialog->show();
 }
 
 void gameInterface::on_card2_1_clicked(bool checked)
 {
     //卡5的点击回馈
+    dialog->show();
     ui->card2_1->setStyleSheet("border-image:url(:/images/card/yellow-middle/5.png)");
 }
 
 void gameInterface::on_card2_2_clicked(bool checked)
 {
     //卡6的点击回馈
+    dialog->show();
 }
 
 void gameInterface::on_card2_3_clicked(bool checked)
 {
     //卡7的点击回馈
+    dialog->show();
 }
 
 
 void gameInterface::on_card2_4_clicked(bool checked)
 {
     //卡8的点击回馈
+    dialog->show();
 }
 
 void gameInterface::on_card3_1_clicked(bool checked)
 {
     //卡9的点击回馈
+    dialog->show();
     ui->card3_1->setStyleSheet("border-image:url(:/images/card/green-low/5.png)");
 }
 
 void gameInterface::on_card3_2_clicked(bool checked)
 {
     //卡10的点击回馈
+    dialog->show();
 }
 
 void gameInterface::on_card3_3_clicked(bool checked)
 {
     //卡11的点击回馈
+    dialog->show();
 }
 
 void gameInterface::on_card3_4_clicked(bool checked)
 {
     //卡12的点击回馈
+    dialog->show();
 }
 
+
+void gameInterface::on_selectBlack_clicked()
+{
+    //点击黑币
+    dialog2->showBlack();
+}
+
+void gameInterface::on_selectRed_clicked()
+{
+    //点击红币
+    dialog2->showRed();
+}
+
+
+
+void gameInterface::on_selectGreen_clicked()
+{
+    //点击绿币
+    dialog2->showGreen();
+}
