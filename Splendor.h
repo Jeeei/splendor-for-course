@@ -45,7 +45,7 @@ public:
 	bool Take(int*, int l = 6);//拿宝石 传一个在Table.Take()中认定合法的Diamond[6]
 	bool Buy(Card*);//买卡 
 	bool Reserve(Card*, bool);//扣卡,bool参数表示场上是否有黄金剩余,返回player宝石是否可拿
-	int NobleCome(Noble*);//贵族到访
+	bool NobleCome(Noble*);//贵族到访
 	void GetDiamonds(int*);//返回宝石  
 	void GetBonus(int*);//返回玩家拥有的红利数 /*Cards暂时只保存了颜色*/
 	bool CanBuy(Card* card);//检查玩家能否买卡
