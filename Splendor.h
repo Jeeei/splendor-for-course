@@ -1,63 +1,63 @@
 #pragma once
 #include <iostream>
 #include<fstream>
-enum color { Red, Green, Blue, White, Black, Gold };//±¦Ê¯ÑÕÉ«
+enum color { Red, Green, Blue, White, Black, Gold };//å®çŸ³é¢œè‰²
 using namespace std;
-class Card //·¢Õ¹¿¨Àà
+class Card //å‘å±•å¡ç±»
 {
 	friend class Player;
-	friend class Table;//¸øÓè·ÃÎÊÈ¨ÏŞ(ºÃÏñ²»ĞèÒª£¬ÄÜ¶Á¾ÍĞĞ£©
+	friend class Table;//ç»™äºˆè®¿é—®æƒé™(å¥½åƒä¸éœ€è¦ï¼Œèƒ½è¯»å°±è¡Œï¼‰
 public:
 	Card();
-	Card(color, int*, int);//Ä¿Ç°Ö±½Ó´«²ÎÉú³É¿¨Æ¬£¬¹ó×åµÈ
-	color GetBonus()const;//·µ»Øbonus 
-	void GetPrice(int*)const;//·µ»ØÔÚ´«ÈëµÄint*
-	int GetRep()const;//·µ»Øreputation
+	Card(color, int*, int);//ç›®å‰ç›´æ¥ä¼ å‚ç”Ÿæˆå¡ç‰‡ï¼Œè´µæ—ç­‰
+	color GetBonus()const;//è¿”å›bonus 
+	void GetPrice(int*)const;//è¿”å›åœ¨ä¼ å…¥çš„int*
+	int GetRep()const;//è¿”å›reputation
 	Card* next = NULL;
 private:
-	color Bonus;//¿¨Ëù´ø±¦Ê¯ÑÕÉ«£¨ºìÀû£©
-	int Price[6];//¹ºÂò·¢Õ¹¿¨ËùĞè±¦Ê¯µÄÊıÁ¿/* ÓÃprice[color]·ÃÎÊ*/
-	int Rep;//ÉùÍûµãÊı
-	fstream& operator<<(Card&);//ÎÄ¼ş´æ´¢Ê±³õÊ¼»¯Ê±³õÊ¼»¯ºÍ´¢´æĞÅÏ¢
+	color Bonus;//å¡æ‰€å¸¦å®çŸ³é¢œè‰²ï¼ˆçº¢åˆ©ï¼‰
+	int Price[6];//è´­ä¹°å‘å±•å¡æ‰€éœ€å®çŸ³çš„æ•°é‡/* ç”¨price[color]è®¿é—®*/
+	int Rep;//å£°æœ›ç‚¹æ•°
+	fstream& operator<<(Card&);//æ–‡ä»¶å­˜å‚¨æ—¶åˆå§‹åŒ–æ—¶åˆå§‹åŒ–å’Œå‚¨å­˜ä¿¡æ¯
 	fstream& operator>>(Card&);
 };
 
-class Noble//¹ó×åÀà  
+class Noble//è´µæ—ç±»  
 {
 public:
 	Noble();
 	Noble(int rep, int* con);
-	int GetRep()const;//ÏÔÊ¾ÉùÍûµãÊı
+	int GetRep()const;//æ˜¾ç¤ºå£°æœ›ç‚¹æ•°
 	void GetCondition(int*)const;
-	bool CanVisit(Player*);//¼ì²éÄÜ·ñ·ÃÎÊÍæ¼Ò
+	bool CanVisit(Player*);//æ£€æŸ¥èƒ½å¦è®¿é—®ç©å®¶
 private:
-	int Rep;//ÉùÍûµãÊı
-	int Condition[6];//¹ó×åµ½·ÃµÄ±¦Ê¯Ìõ¼ş
-	//Ö¸ÏòÍ¼Æ¬µÄÖ¸Õë
+	int Rep;//å£°æœ›ç‚¹æ•°
+	int Condition[6];//è´µæ—åˆ°è®¿çš„å®çŸ³æ¡ä»¶
+	//æŒ‡å‘å›¾ç‰‡çš„æŒ‡é’ˆ
 };
 
-class Player//Íæ¼ÒÀà£¬´¢´æÍæ¼ÒµÄĞÅÏ¢
+class Player//ç©å®¶ç±»ï¼Œå‚¨å­˜ç©å®¶çš„ä¿¡æ¯
 {
-	friend class Table;//¸øÓè·ÃÎÊÈ¨ÏŞ
+	friend class Table;//ç»™äºˆè®¿é—®æƒé™
 public:
 	Player();
 	~Player();
-	bool Take(int*, int l = 6);//ÄÃ±¦Ê¯ ´«Ò»¸öÔÚTable.Take()ÖĞÈÏ¶¨ºÏ·¨µÄDiamond[6]
-	bool Buy(Card*);//Âò¿¨ 
-	bool Reserve(Card*, bool);//¿Û¿¨,bool²ÎÊı±íÊ¾³¡ÉÏÊÇ·ñÓĞ»Æ½ğÊ£Óà,·µ»Øplayer±¦Ê¯ÊÇ·ñ¿ÉÄÃ
-	int NobleCome(Noble*);//¹ó×åµ½·Ã
-	void GetDiamonds(int*);//·µ»Ø±¦Ê¯  
-	void GetBonus(int*);//·µ»ØÍæ¼ÒÓµÓĞµÄºìÀûÊı /*CardsÔİÊ±Ö»±£´æÁËÑÕÉ«*/
-	bool CanBuy(Card* card);//¼ì²éÍæ¼ÒÄÜ·ñÂò¿¨
-	bool CanReserve()const;//¼ì²éÍæ¼ÒÄÜ·ñ¿Û¿¨
+	bool Take(int*, int l = 6);//æ‹¿å®çŸ³ ä¼ ä¸€ä¸ªåœ¨Table.Take()ä¸­è®¤å®šåˆæ³•çš„Diamond[6]
+	bool Buy(Card*);//ä¹°å¡ 
+	bool Reserve(Card*, bool);//æ‰£å¡,boolå‚æ•°è¡¨ç¤ºåœºä¸Šæ˜¯å¦æœ‰é»„é‡‘å‰©ä½™,è¿”å›playerå®çŸ³æ˜¯å¦å¯æ‹¿
+	int NobleCome(Noble*);//è´µæ—åˆ°è®¿
+	void GetDiamonds(int*);//è¿”å›å®çŸ³  
+	void GetBonus(int*);//è¿”å›ç©å®¶æ‹¥æœ‰çš„çº¢åˆ©æ•° /*Cardsæš‚æ—¶åªä¿å­˜äº†é¢œè‰²*/
+	bool CanBuy(Card* card);//æ£€æŸ¥ç©å®¶èƒ½å¦ä¹°å¡
+	bool CanReserve()const;//æ£€æŸ¥ç©å®¶èƒ½å¦æ‰£å¡
 
 protected:
-	int Diamonds[6];//Íæ¼ÒÓµÓĞµÄ±¦Ê¯Êı
-	int Rep = 0;//Íæ¼ÒÓµÓĞµÄÉùÍûµãÊı
-	Noble* Nobles[5];//Íæ¼ÒÓµÓĞµÄ¹ó×å¿¨
-	int Cards[6];//Íæ¼ÒÓµÓĞµÄ·¢Õ¹¿¨/*ÔİÊ±²»´¢´æ¿¨Æ¬ĞÅÏ¢Ö»±£´æ²»Í¬ÑÕÉ«µÄÊıÁ¿*/
+	int Diamonds[6];//ç©å®¶æ‹¥æœ‰çš„å®çŸ³æ•°
+	int Rep = 0;//ç©å®¶æ‹¥æœ‰çš„å£°æœ›ç‚¹æ•°
+	Noble* Nobles[5];//ç©å®¶æ‹¥æœ‰çš„è´µæ—å¡
+	int Cards[6];//ç©å®¶æ‹¥æœ‰çš„å‘å±•å¡/*æš‚æ—¶ä¸å‚¨å­˜å¡ç‰‡ä¿¡æ¯åªä¿å­˜ä¸åŒé¢œè‰²çš„æ•°é‡*/
 	Card* Reserved[3];
-	int TotalDiamonds()const;//·µ»ØÍæ¼ÒÓµÓĞÈ«²¿±¦Ê¯Êı
+	int TotalDiamonds()const;//è¿”å›ç©å®¶æ‹¥æœ‰å…¨éƒ¨å®çŸ³æ•°
 
 };
 
@@ -66,34 +66,35 @@ class Table
 {
 public:
 	Table();
-	bool Start();//ÓëÓÃ»§½»»¥³õÊ¼»¯ ÏÈÉú³É2¸öPlayers²¢µ÷ÓÃInit ºóĞø²¹³äÆäËûÑ¡Ïî
-	bool Init();//ÓëÓÃ»§ÎŞ¹Ø³õÊ¼»¯ ¿É±»Start()µ÷ÓÃ Éú³É¹Ì¶¨µÄCardsºÍNoblesÁ´±í
-	int Round();//»ØºÏ½øĞĞº¯Êı£¬¶ÔÃ¿¸öÍæ¼Òµ÷ÓÃOperate()£¬²¢ÔÚÖ®ºó½øĞĞÏàÓ¦ÅĞ¶Ï²Ù×÷
-	bool Take(Player*);//µ÷ÓÃÏàÓ¦Íæ¼ÒµÄÏàÓ¦º¯Êı,¼ÇÂ¼ÄÃµÄ´ÎÊıºÍ¹æÔò¼ì²é
-	bool Buy(Player*, int, int);//Âò³¡ÉÏ·­¿ªµÄ¿¨,½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄ¿¨µÄ¶şÎ¬Êı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄBuy()
-	bool Buy(Player*, int);//Âò×Ô¼º¿ÛÁôµÄ¿¨,½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄÒÑ¿ÛÁô¿¨µÄÊı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄBuy()
-	bool Reserve(Player*, int, int);//½Ó¿Ú,Ğè½ÓÊÕ½çÃæ·µ»ØµÄ¿¨µÄ¶şÎ¬Êı×é×ø±ê,µ÷ÓÃÏàÓ¦Íæ¼ÒµÄÏàÓ¦º¯Êı
-	bool CreateCard(int, int);//Éú³É·¢Õ¹¿¨,lvºÍcoordÎª¶şÎ¬Êı×é×ø±ê
+	~Table();
+	bool Start();//ä¸ç”¨æˆ·äº¤äº’åˆå§‹åŒ– å…ˆç”Ÿæˆ2ä¸ªPlayerså¹¶è°ƒç”¨Init åç»­è¡¥å……å…¶ä»–é€‰é¡¹
+	bool Init();//ä¸ç”¨æˆ·æ— å…³åˆå§‹åŒ– å¯è¢«Start()è°ƒç”¨ ç”Ÿæˆå›ºå®šçš„Cardså’ŒNoblesé“¾è¡¨
+	int Round();//å›åˆè¿›è¡Œå‡½æ•°ï¼Œå¯¹æ¯ä¸ªç©å®¶è°ƒç”¨Operate()ï¼Œå¹¶åœ¨ä¹‹åè¿›è¡Œç›¸åº”åˆ¤æ–­æ“ä½œ
+	bool Take(Player*);//è°ƒç”¨ç›¸åº”ç©å®¶çš„ç›¸åº”å‡½æ•°,è®°å½•æ‹¿çš„æ¬¡æ•°å’Œè§„åˆ™æ£€æŸ¥
+	bool Buy(Player*, int, int);//ä¹°åœºä¸Šç¿»å¼€çš„å¡,æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å¡çš„äºŒç»´æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„Buy()
+	bool Buy(Player*, int);//ä¹°è‡ªå·±æ‰£ç•™çš„å¡,æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å·²æ‰£ç•™å¡çš„æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„Buy()
+	bool Reserve(Player*, int, int);//æ¥å£,éœ€æ¥æ”¶ç•Œé¢è¿”å›çš„å¡çš„äºŒç»´æ•°ç»„åæ ‡,è°ƒç”¨ç›¸åº”ç©å®¶çš„ç›¸åº”å‡½æ•°
+	bool CreateCard(int, int);//ç”Ÿæˆå‘å±•å¡,lvå’Œcoordä¸ºäºŒç»´æ•°ç»„åæ ‡
 
-	int Operate(Player*);//¼ÓÈëoperateº¯Êı×÷Îª½Ó¿Ú,½ÓÊÕÍæ¼ÒµÄ²Ù×÷£¬µ÷ÓÃ²»Í¬µÄº¯Êı»òÕß½áÊø»ØºÏ
-	int ChooseNoble(Player*, int*);//Ñ¡Ôñ¹ó×åµ½·Ã
-	int ShowDiamonds();//ÏÔÊ¾³¡ÉÏÊ£Óà±¦Ê¯£¬½çÃæÊä³ö½Ó¿Ú
+	int Operate(Player*);//åŠ å…¥operateå‡½æ•°ä½œä¸ºæ¥å£,æ¥æ”¶ç©å®¶çš„æ“ä½œï¼Œè°ƒç”¨ä¸åŒçš„å‡½æ•°æˆ–è€…ç»“æŸå›åˆ
+	int ChooseNoble(Player*, int*);//é€‰æ‹©è´µæ—åˆ°è®¿
+	int ShowDiamonds();//æ˜¾ç¤ºåœºä¸Šå‰©ä½™å®çŸ³ï¼Œç•Œé¢è¾“å‡ºæ¥å£
 private:
-	Card* CardHead[3];//Î´·­¿ªµÄ¿¨ /*¼û×¢ÊÍ1
-	Card* OpenCard[3][4];//·­¿ªµÄ¿¨ 
-	Noble* Nobles[5];//Ê¹ÓÃµÄ¹ó×å
-	int Diamonds[6];//×ÀÃæÉÏµÄ±¦Ê¯Ê£Óà
-	Player* Players[4];//Íæ¼Ò
+	Card* CardHead[3];//æœªç¿»å¼€çš„å¡ /*è§æ³¨é‡Š1
+	Card* OpenCard[3][4];//ç¿»å¼€çš„å¡ 
+	Noble* Nobles[5];//ä½¿ç”¨çš„è´µæ—
+	int Diamonds[6];//æ¡Œé¢ä¸Šçš„å®çŸ³å‰©ä½™
+	Player* Players[4];//ç©å®¶
 };
 
-/*×¢ÊÍ1£ºÃ¿Éú³ÉÒ»¸öCard»òÕßNoble¾Í´´½¨Ò»¸öÖ¸ÏòÆäµÄÖ¸Õë£¬µ±Table»òPlayerÓµÓĞ
-Card»òNobleÊ±£¬ÓÃÆäÖ¸ÕëÊı×éÖĞµÄÖ¸ÕëÖ¸Ïò¸ÃCard»òÕßNoble£¬±£Ö¤Ò»¸öCard»òÕßNoble
-Í¬Ê±Ö»ÓĞÒ»¸öÖ¸ÕëÖ¸ÏòËü
-×¢ÊÍ2£ºÊµ²ÎÊ××ÖÄ¸´óĞ´£¬ĞÎ²ÎÈ«Ğ¡Ğ´
+/*æ³¨é‡Š1ï¼šæ¯ç”Ÿæˆä¸€ä¸ªCardæˆ–è€…Nobleå°±åˆ›å»ºä¸€ä¸ªæŒ‡å‘å…¶çš„æŒ‡é’ˆï¼Œå½“Tableæˆ–Playeræ‹¥æœ‰
+Cardæˆ–Nobleæ—¶ï¼Œç”¨å…¶æŒ‡é’ˆæ•°ç»„ä¸­çš„æŒ‡é’ˆæŒ‡å‘è¯¥Cardæˆ–è€…Nobleï¼Œä¿è¯ä¸€ä¸ªCardæˆ–è€…Noble
+åŒæ—¶åªæœ‰ä¸€ä¸ªæŒ‡é’ˆæŒ‡å‘å®ƒ
+æ³¨é‡Š2ï¼šå®å‚é¦–å­—æ¯å¤§å†™ï¼Œå½¢å‚å…¨å°å†™
 
-ÏÈ°ÑÉ¶¸ã³öÀ´£º
-³ıTableÒÔÍâÀàµÄ³ÉÔ±º¯ÊıºÍTable.Init() Table.Start()
-Ä¿Ç°Ö±½Ó´«²Î³õÊ¼»¯¿¨Æ¬£¬¹ó×å£¬×ÀÃæ£¬ÎÄ¼şÁ÷À´µÃ¼°¾Í²¹
+å…ˆæŠŠå•¥æå‡ºæ¥ï¼š
+é™¤Tableä»¥å¤–ç±»çš„æˆå‘˜å‡½æ•°å’ŒTable.Init() Table.Start()
+ç›®å‰ç›´æ¥ä¼ å‚åˆå§‹åŒ–å¡ç‰‡ï¼Œè´µæ—ï¼Œæ¡Œé¢ï¼Œæ–‡ä»¶æµæ¥å¾—åŠå°±è¡¥
 
 */
 
