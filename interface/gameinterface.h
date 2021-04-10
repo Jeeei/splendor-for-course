@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include "dialog.h"
+#include "dialog2.h"
 
 namespace Ui {
 class gameInterface;
@@ -68,13 +69,23 @@ private slots:
 
     void on_card2_1_clicked();
 
+    void on_selectBlack_clicked();
+
+    void on_selectRed_clicked();
+
+    void on_selectGreen_clicked();
+
+    void on_toolButton_clicked();
+
 private:
     Ui::gameInterface *ui;
     Dialog *dialog;
+    Dialog2 *dialog2;
 
 protected slots:
    void DialogPurchaseSlot();
    void DialogCancelSlot();
+   void dialog2OKSlot();
 };
 
 #endif // GAMEINTERFACE_H
