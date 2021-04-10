@@ -91,7 +91,7 @@ bool Player::Reserve(Card* card, bool goldleft)//玩家扣卡
 {
 	for (int i = 0; i < 3; i++)
 	{
-		if (Reserved[i] != NULL)
+		if (Reserved[i] == NULL)
 		{
 			Reserved[i] = card;
 			if (TotalDiamonds() < 10 && goldleft)//判断玩家能否拿黄金
@@ -99,7 +99,7 @@ bool Player::Reserve(Card* card, bool goldleft)//玩家扣卡
 				Diamonds[Gold]++;
 				return true;
 			}
-			return false;
+			else return false;
 		}
 	}
 	
