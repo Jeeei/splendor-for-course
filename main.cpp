@@ -1,13 +1,13 @@
-#include "Splendor.h"
-using namespace std;
+#include "gameinterface.h"
+#include <QApplication>
+#include <QWidget>
 
-
-
-
-int main()
+int main(int argc, char *argv[])
 {
-	//Empty
+    QApplication a(argc, argv);
+    gameInterface w;
+    w.setFixedSize(1293,765);
+    w.show();
+
+    return a.exec();
 }
-
-
-
