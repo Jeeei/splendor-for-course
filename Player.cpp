@@ -15,70 +15,70 @@ Player::~Player()
 {
 
 }
-void Player::GetDiamonds(int*p)//·µ»Ø±¦Ê¯
+void Player::GetDiamonds(int*p)//è¿”å›å®çŸ³
 {
 	for (int i = 0;i < 6;i++)
 	{
 		p[i] = Diamonds[i];
 	}
 }
-void Player::GetBonus(int*p)//·µ»ØÍæ¼ÒÓµÓĞµÄºìÀûÊı
+void Player::GetBonus(int*p)//è¿”å›ç©å®¶æ‹¥æœ‰çš„çº¢åˆ©æ•°
 {
 	for (int i = 0;i < 6;i++)
 	{
 		p[i] = Cards[i];
 	}
 }
-int Player::TotalDiamonds()const//·µ»ØÍæ¼ÒÓµÓĞÈ«²¿±¦Ê¯Êı
+int Player::TotalDiamonds()const//è¿”å›ç©å®¶æ‹¥æœ‰å…¨éƒ¨å®çŸ³æ•°
 {
 	int sum = 0;
 	for (int i = 0; i < 6; i++)
 		sum += Diamonds[i];
 	return sum;
 }
-bool Player::Take(int* diamond, int l)//ÄÃ±¦Ê¯ ´«Ò»¸öÔÚTable.Take()ÖĞÈÏ¶¨ºÏ·¨µÄDiamond[6]
+bool Player::Take(int* diamond, int l)//æ‹¿å®çŸ³ ä¼ ä¸€ä¸ªåœ¨Table.Take()ä¸­è®¤å®šåˆæ³•çš„Diamond[6]
 {
 	for (int i = 0; i < l; i++)
 		Diamonds[i] += *(diamond + i);
 	return true;
 }
-bool Player::CanBuy(Card* card)//¼ì²éÍæ¼ÒÄÜ·ñÂò¿¨
+bool Player::CanBuy(Card* card)//æ£€æŸ¥ç©å®¶èƒ½å¦ä¹°å¡
 {
 	int gold = Diamonds[Gold];
 	int* price = new int[6];
 	card->GetPrice(price);
-	for (int i = 0; i < 5; i++)//Îå¸öÑÕÉ«
+	for (int i = 0; i < 5; i++)//äº”ä¸ªé¢œè‰²
 	{
-		if (Cards[i] >= price[i])//²»ÓÃ±¦Ê¯¾ÍÂòµÃÆğ
+		if (Cards[i] >= price[i])//ä¸ç”¨å®çŸ³å°±ä¹°å¾—èµ·
 			continue;
-		else if (Diamonds[i] + Cards[i] >= price[i])//²»ÓÃ»Æ½ğ¾ÍÂòµÃÆğ
+		else if (Diamonds[i] + Cards[i] >= price[i])//ä¸ç”¨é»„é‡‘å°±ä¹°å¾—èµ·
 			continue;
-		else if (Diamonds[i] + Cards[i] + gold >= price[i])//ÒªÓÃ»Æ½ğ²ÅÂòµÃÆğ
+		else if (Diamonds[i] + Cards[i] + gold >= price[i])//è¦ç”¨é»„é‡‘æ‰ä¹°å¾—èµ·
 			gold -= price[i] - (Diamonds[i] + Cards[i]);
 		else return false;
-		if (gold < 0)  //Âò²»Æğ°¡¸É
+		if (gold < 0)  //ä¹°ä¸èµ·å•Šå¹²
 			return false;
 	}
 	return true;
 }
-bool Player::Buy(Card* card)//Íæ¼ÒÂò¿¨
+bool Player::Buy(Card* card)//ç©å®¶ä¹°å¡
 {
 	int* price = new int[6];
 	card->GetPrice(price);
 	for (int i = 0; i < 5; i++)
 	{
-		if (Cards[i] >= price[i])//²»ÓÃ±¦Ê¯¾ÍÂòµÃÆğ
+		if (Cards[i] >= price[i])//ä¸ç”¨å®çŸ³å°±ä¹°å¾—èµ·
 			continue;
-		else if (Diamonds[i] + Cards[i] >= price[i])//²»ÓÃ»Æ½ğ¾ÍÂòµÃÆğ
+		else if (Diamonds[i] + Cards[i] >= price[i])//ä¸ç”¨é»„é‡‘å°±ä¹°å¾—èµ·
 			Diamonds[i] -= price[i] - Cards[i];
-		else if (Diamonds[i] + Cards[i] + Diamonds[Gold] >= price[i])//ÒªÓÃ»Æ½ğ²ÅÂòµÃÆğ
+		else if (Diamonds[i] + Cards[i] + Diamonds[Gold] >= price[i])//è¦ç”¨é»„é‡‘æ‰ä¹°å¾—èµ·
 			Diamonds[Gold] -= price[i] - (Diamonds[i] + Cards[i]);
 	}
 	Cards[card->GetBonus()]++;
 	Rep += card->GetRep();
 	return true;
 }
-bool Player::CanReserve()const//¼ì²éÍæ¼ÒÄÜ·ñ¿Û¿¨
+bool Player::CanReserve()const//æ£€æŸ¥ç©å®¶èƒ½å¦æ‰£å¡
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -87,14 +87,14 @@ bool Player::CanReserve()const//¼ì²éÍæ¼ÒÄÜ·ñ¿Û¿¨
 	}
 	return false;
 }
-bool Player::Reserve(Card* card, bool goldleft)//Íæ¼Ò¿Û¿¨
+bool Player::Reserve(Card* card, bool goldleft)//ç©å®¶æ‰£å¡
 {
 	for (int i = 0; i < 3; i++)
 	{
 		if (Reserved[i] != NULL)
 		{
 			Reserved[i] = card;
-			if (TotalDiamonds() < 10 && goldleft)//ÅĞ¶ÏÍæ¼ÒÄÜ·ñÄÃ»Æ½ğ
+			if (TotalDiamonds() < 10 && goldleft)//åˆ¤æ–­ç©å®¶èƒ½å¦æ‹¿é»„é‡‘
 			{
 				Diamonds[Gold]++;
 				return true;
@@ -104,15 +104,16 @@ bool Player::Reserve(Card* card, bool goldleft)//Íæ¼Ò¿Û¿¨
 	}
 	
 }
-int Player::NobleCome(Noble* noble)//¹ó×åµ½·Ã
+bool Player::NobleCome(Noble* noble)//è´µæ—åˆ°è®¿
 {
 	for (int i = 0; i < 3; i++)
 	{
 		if (Nobles[i] == NULL)
 		{
 			Nobles[i] = noble;
-			Rep += noble->GetRep();//Ôö¼ÓÉùÍûµãÊı
-			break;
+			Rep += noble->GetRep();//å¢åŠ å£°æœ›ç‚¹æ•°
+			return true;
 		}
 	}
+	return false;
 }
