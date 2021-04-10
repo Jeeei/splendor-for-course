@@ -16,3 +16,7 @@ Dialog::~Dialog()
     delete ui;
 }
 
+void Dialog::showImageChanged()
+{
+    ui->label->setStyleSheet("border-image:url(:/images/card/blue-high/1.png)");
+}
