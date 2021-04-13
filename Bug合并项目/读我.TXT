@@ -1,0 +1,12 @@
+1.这个文件夹里的文件最好放在同一个文件夹下，打开Splendor里的Splendor.pro即可打开项目
+
+2.里面的Splendor.h以及部分cpp文件在后端一稿的基础上有所修改
+
+3.Table对象只在gameinterface.h和gameinterface.cpp中出现，在构造和析构函数，
+在买卡片和选宝石的DialogPurchaseSlot()和dialog2OKSlot()里出现，
+要让程序运行起来只需要在这几个地方把有Table对象的语句注释掉
+
+4.另外，要把在moc_gameinterface.cpp调试出错的那几行语句注释掉
+
+5.如果无法解决这个问题，就考虑直接用界面运行的exe程序作为结果交上去
+（因为，接不接后端，差不多）
