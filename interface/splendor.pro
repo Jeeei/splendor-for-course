@@ -41,4 +41,3 @@ FORMS += \
 
 RESOURCES += \
     pictures.qrc
-

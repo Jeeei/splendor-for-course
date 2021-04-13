@@ -261,9 +261,9 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>970</x>
-     <y>200</y>
-     <width>41</width>
-     <height>41</height>
+     <y>190</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -282,9 +282,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="red_num">
    <property name="geometry">
     <rect>
-     <x>980</x>
-     <y>290</y>
-     <width>41</width>
+     <x>990</x>
+     <y>280</y>
+     <width>51</width>
      <height>41</height>
     </rect>
    </property>
@@ -298,16 +298,16 @@ border-style:outset</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="green_num">
    <property name="geometry">
     <rect>
      <x>980</x>
-     <y>380</y>
-     <width>41</width>
-     <height>41</height>
+     <y>370</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -485,7 +485,7 @@ border-style:outset</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#ffffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#ffffff;&quot;&gt;7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="black_have">
@@ -654,7 +654,7 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(255, 255, 224,0.5);
+    <string notr="true">background-color:rgba(130, 87, 103,0.8);
 border-radius:20px</string>
    </property>
   </widget>
@@ -668,8 +668,9 @@ border-radius:20px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(255, 255, 224,0.5);
-border-radius:20px</string>
+    <string notr="true">background-color:rgba(130, 87, 103,0.8);
+border-radius:20px
+</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser">
@@ -696,10 +697,10 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="textBrowser_2">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>630</y>
-     <width>241</width>
-     <height>111</height>
+     <x>960</x>
+     <y>620</y>
+     <width>281</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -710,7 +711,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;目前仅支持拿取&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;黑红绿&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;三个币，请&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;按顺序&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;拿取，更多精彩内容，敬请期待！&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;目前仅支持拿取&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;黑红绿&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;三个币，请&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;点击“我要拿币”&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;后&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;按顺序&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;拿取，更多精彩内容，敬请期待！&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffaa7f;&quot;&gt;(点击币，即可拿取）&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
@@ -725,6 +726,26 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>我要拿币</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser_3">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>290</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.523, x2:1, y2:0.54, stop:0 rgba(101, 67, 80, 255), stop:1 rgba(133, 89, 105, 255));</string>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#ffffff;&quot;&gt;请先买卡，再拿币！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>background</zorder>
@@ -764,6 +785,7 @@ p, li { white-space: pre-wrap; }
   <zorder>textBrowser</zorder>
   <zorder>textBrowser_2</zorder>
   <zorder>toolButton</zorder>
+  <zorder>textBrowser_3</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

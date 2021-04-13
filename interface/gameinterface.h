@@ -77,10 +77,20 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_white_have_textChanged();
+
+    void on_green_have_textChanged();
+
+    void on_red_have_textChanged();
+
+    void on_black_have_textChanged();
+
 private:
     Ui::gameInterface *ui;
     Dialog *dialog;
     Dialog2 *dialog2;
+    int color;
+    int action;//用来表示行为，0表示拿，1表示买
 
 protected slots:
    void DialogPurchaseSlot();

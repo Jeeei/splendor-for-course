@@ -62,6 +62,7 @@ public:
     QTextBrowser *textBrowser;
     QTextBrowser *textBrowser_2;
     QToolButton *toolButton;
+    QTextBrowser *textBrowser_3;
 
     void setupUi(QWidget *gameInterface)
     {
@@ -142,19 +143,19 @@ public:
 "border-style:outset"));
         black_num = new QTextBrowser(gameInterface);
         black_num->setObjectName(QStringLiteral("black_num"));
-        black_num->setGeometry(QRect(970, 200, 41, 41));
+        black_num->setGeometry(QRect(970, 190, 51, 51));
         black_num->setStyleSheet(QLatin1String("background:transparent;\n"
 "border-width:0;\n"
 "border-style:outset"));
         red_num = new QTextBrowser(gameInterface);
         red_num->setObjectName(QStringLiteral("red_num"));
-        red_num->setGeometry(QRect(980, 290, 41, 41));
+        red_num->setGeometry(QRect(990, 280, 51, 41));
         red_num->setStyleSheet(QLatin1String("background:transparent;\n"
 "border-width:0;\n"
 "border-style:outset"));
         green_num = new QTextBrowser(gameInterface);
         green_num->setObjectName(QStringLiteral("green_num"));
-        green_num->setGeometry(QRect(980, 380, 41, 41));
+        green_num->setGeometry(QRect(980, 370, 51, 51));
         green_num->setStyleSheet(QLatin1String("background:transparent;\n"
 "border-width:0;\n"
 "border-style:outset"));
@@ -258,24 +259,29 @@ public:
         gradePeople2 = new QTextBrowser(gameInterface);
         gradePeople2->setObjectName(QStringLiteral("gradePeople2"));
         gradePeople2->setGeometry(QRect(110, 40, 41, 41));
-        gradePeople2->setStyleSheet(QLatin1String("background-color:rgba(255, 255, 224,0.5);\n"
+        gradePeople2->setStyleSheet(QLatin1String("background-color:rgba(130, 87, 103,0.8);\n"
 "border-radius:20px"));
         gradePeople1 = new QTextBrowser(gameInterface);
         gradePeople1->setObjectName(QStringLiteral("gradePeople1"));
         gradePeople1->setGeometry(QRect(120, 600, 41, 41));
-        gradePeople1->setStyleSheet(QLatin1String("background-color:rgba(255, 255, 224,0.5);\n"
-"border-radius:20px"));
+        gradePeople1->setStyleSheet(QLatin1String("background-color:rgba(130, 87, 103,0.8);\n"
+"border-radius:20px\n"
+""));
         textBrowser = new QTextBrowser(gameInterface);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(10, 310, 241, 151));
         textBrowser->setStyleSheet(QStringLiteral("background-color: qlineargradient(spread:pad, x1:0, y1:0.523, x2:1, y2:0.54, stop:0 rgba(101, 67, 80, 255), stop:1 rgba(133, 89, 105, 255));"));
         textBrowser_2 = new QTextBrowser(gameInterface);
         textBrowser_2->setObjectName(QStringLiteral("textBrowser_2"));
-        textBrowser_2->setGeometry(QRect(940, 630, 241, 111));
+        textBrowser_2->setGeometry(QRect(960, 620, 281, 131));
         textBrowser_2->setStyleSheet(QStringLiteral("background-color: qlineargradient(spread:pad, x1:0, y1:0.523, x2:1, y2:0.54, stop:0 rgba(101, 67, 80, 255), stop:1 rgba(133, 89, 105, 255));"));
         toolButton = new QToolButton(gameInterface);
         toolButton->setObjectName(QStringLiteral("toolButton"));
         toolButton->setGeometry(QRect(1080, 90, 111, 41));
+        textBrowser_3 = new QTextBrowser(gameInterface);
+        textBrowser_3->setObjectName(QStringLiteral("textBrowser_3"));
+        textBrowser_3->setGeometry(QRect(510, 290, 291, 41));
+        textBrowser_3->setStyleSheet(QStringLiteral("background-color: qlineargradient(spread:pad, x1:0, y1:0.523, x2:1, y2:0.54, stop:0 rgba(101, 67, 80, 255), stop:1 rgba(133, 89, 105, 255));"));
         background->raise();
         card1_1->raise();
         card1_2->raise();
@@ -313,6 +319,7 @@ public:
         textBrowser->raise();
         textBrowser_2->raise();
         toolButton->raise();
+        textBrowser_3->raise();
 
         retranslateUi(gameInterface);
 
@@ -348,7 +355,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">5</span></p></body></html>", Q_NULLPTR));
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">0</span></p></body></html>", Q_NULLPTR));
         green_num->setHtml(QApplication::translate("gameInterface", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -385,7 +392,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt; font-weight:600; color:#ffffff;\">0</span></p></body></html>", Q_NULLPTR));
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt; font-weight:600; color:#ffffff;\">7</span></p></body></html>", Q_NULLPTR));
         black_have->setHtml(QApplication::translate("gameInterface", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -413,10 +420,15 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\347\233\256\345\211\215\344\273\205\346\224\257\346\214\201\346\213\277\345\217\226</span><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">\351\273\221\347\272\242\347\273\277</span><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\344\270\211\344\270\252\345\270\201\357\274\214\350\257\267</span><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">\346\214\211\351\241\272\345\272\217</span><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\346"
-                        "\213\277\345\217\226\357\274\214\346\233\264\345\244\232\347\262\276\345\275\251\345\206\205\345\256\271\357\274\214\346\225\254\350\257\267\346\234\237\345\276\205\357\274\201</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\347\233\256\345\211\215\344\273\205\346\224\257\346\214\201\346\213\277\345\217\226</span><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">\351\273\221\347\272\242\347\273\277</span><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\344\270\211\344\270\252\345\270\201\357\274\214\350\257\267</span><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">\347\202\271\345\207\273\342\200\234\346\210\221\350\246\201\346\213\277\345\270\201\342\200\235</span><span s"
+                        "tyle=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\345\220\216</span><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">\346\214\211\351\241\272\345\272\217</span><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">\346\213\277\345\217\226\357\274\214\346\233\264\345\244\232\347\262\276\345\275\251\345\206\205\345\256\271\357\274\214\346\225\254\350\257\267\346\234\237\345\276\205\357\274\201</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ffaa7f;\">(\347\202\271\345\207\273\345\270\201\357\274\214\345\215\263\345\217\257\346\213\277\345\217\226\357\274\211</span></p></body></html>", Q_NULLPTR));
         toolButton->setText(QApplication::translate("gameInterface", "\346\210\221\350\246\201\346\213\277\345\270\201", Q_NULLPTR));
+        textBrowser_3->setHtml(QApplication::translate("gameInterface", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600; color:#ffffff;\">\350\257\267\345\205\210\344\271\260\345\215\241\357\274\214\345\206\215\346\213\277\345\270\201\357\274\201</span></p></body></html>", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -17,8 +17,10 @@ gameInterface::gameInterface(QWidget *parent) :
     dialog = new Dialog(this);//购买窗口
     dialog->setModal(false);
     dialog2=new Dialog2(this);//拿币窗口
+
     connect(dialog, SIGNAL(DialogPurchase()), SLOT(DialogPurchaseSlot()));// 把子窗口的信号连接到父窗口
     connect(dialog,SIGNAL(DialogCancel()),SLOT(DialogCancelSlot()));
+
     connect(dialog2,SIGNAL(dialog2OK()),SLOT(dialog2OKSlot()));
 }
 
@@ -30,17 +32,47 @@ gameInterface::~gameInterface()
 void gameInterface::DialogPurchaseSlot()
 {
     // 父窗口用于接收子窗口信号的slot
+    action=1;
     dialog->close();
     ui->card1_1->setStyleSheet("border-image:url(:/images/card/blue-high/5.png)");
+    QString have_string="0";
+    ui->red_have->setFontPointSize(qreal(24));
+    ui->red_have->setTextColor(QColor(255,255,255));
+    ui->red_have->setText("0");
+    ui->red_num->setFontPointSize(qreal(14));
+    ui->red_num->setTextColor(QColor(255,255,255));
+    ui->red_num->setText("7");
+    ui->gradePeople1->setFontPointSize(qreal(14));
+    ui->gradePeople1->setTextColor(QColor(255,255,255));
+    ui->gradePeople1->setText("4");
 }
+
 void gameInterface:: DialogCancelSlot()
 {
     dialog->close();
 }
 void gameInterface::dialog2OKSlot()
 {
+    action=0;
     dialog2->close();
-    //在此处添加自己的金币情况
+    ui->black_have->setFontPointSize(qreal(24));
+    ui->black_have->setTextColor(QColor(255,255,255));
+    ui->black_have->setText("1");
+    ui->red_have->setFontPointSize(qreal(24));
+    ui->red_have->setTextColor(QColor(255,255,255));
+    ui->red_have->setText("1");
+    ui->green_have->setFontPointSize(qreal(24));
+    ui->green_have->setTextColor(QColor(255,255,255));
+    ui->green_have->setText("1");
+    ui->black_num->setFontPointSize(qreal(14));
+    ui->black_num->setTextColor(QColor(255,255,255));
+    ui->black_num->setText("4");
+    ui->green_num->setFontPointSize(qreal(14));
+    ui->green_num->setTextColor(QColor(255,255,255));
+    ui->green_num->setText("4");
+    ui->red_num->setFontPointSize(qreal(14));
+    ui->red_num->setTextColor(QColor(255,255,255));
+    ui->red_num->setText("6");
 }
 
 void gameInterface::on_toolButton_clicked()
@@ -86,15 +118,16 @@ void gameInterface::on_card1_1_clicked()
 {
     //background-color: rgba(255, 255, 224, 10%)；//半透明的样式表代码
     //卡1的点击回馈
+    color=1;
     dialog->show();
-    dialog->showImageChanged();
+    dialog->showImageChanged(color);
 }
 
 void gameInterface::on_card1_2_clicked(bool checked)
 {
     //卡2的点击回馈
     dialog->show();
-
+    dialog->showImageChanged(color);
 }
 
 void gameInterface::on_card1_3_clicked(bool checked)
@@ -113,7 +146,9 @@ void gameInterface::on_card1_4_clicked()
 void gameInterface::on_card2_1_clicked(bool checked)
 {
     //卡5的点击回馈
+    color=2;
     dialog->show();
+    dialog->showImageChanged(color);
     ui->card2_1->setStyleSheet("border-image:url(:/images/card/yellow-middle/5.png)");
 }
 
@@ -139,6 +174,7 @@ void gameInterface::on_card2_4_clicked(bool checked)
 void gameInterface::on_card3_1_clicked(bool checked)
 {
     //卡9的点击回馈
+    color=3;
     dialog->show();
     ui->card3_1->setStyleSheet("border-image:url(:/images/card/green-low/5.png)");
 }
@@ -180,4 +216,25 @@ void gameInterface::on_selectGreen_clicked()
 {
     //点击绿币
     dialog2->showGreen();
+}
+
+
+void gameInterface::on_white_have_textChanged()
+{
+
+}
+
+void gameInterface::on_green_have_textChanged()
+{
+
+}
+
+void gameInterface::on_red_have_textChanged()
+{
+
+}
+
+void gameInterface::on_black_have_textChanged()
+{
+
 }
