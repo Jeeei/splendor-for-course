@@ -1,12 +1,17 @@
 1.这个文件夹里的文件最好放在同一个文件夹下，打开Splendor里的Splendor.pro即可打开项目
+但是出现了新的问题，这个文件是在Qt5.14.2下运行创建的，因此低版本Qt并不能打开此项目管理文件
 
 2.里面的Splendor.h以及部分cpp文件在后端一稿的基础上有所修改
 
-3.Table对象只在gameinterface.h和gameinterface.cpp中出现，在构造和析构函数，
-在买卡片和选宝石的DialogPurchaseSlot()和dialog2OKSlot()里出现，
-要让程序运行起来只需要在这几个地方把有Table对象的语句注释掉
+3.Table* table是gameinterface类的数据成员，利用界面窗口的槽函数连接后端，
+在买卡片和选宝石的DialogPurchaseSlot()和dialog2OKSlot()里已有table的take()和buy()函数，
+剩下的 宝石显示 等显示函数仍待接入界面。
 
 4.另外，要把在moc_gameinterface.cpp调试出错的那几行语句注释掉
 
-5.如果无法解决这个问题，就考虑直接用界面运行的exe程序作为结果交上去
-（因为，接不接后端，差不多）
+5.现在开始考虑二次迭代的事
+基本原理是
+点击卡片购买确定按钮 或者宝石选取确定按钮 后
+发出的信号由槽接收 
+槽的内容为(触发另一个游戏界面 后端将操作者切换到另一个玩家)
+从而达到回合轮制的目的
