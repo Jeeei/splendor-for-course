@@ -1,23 +1,23 @@
 #include "Splendor.h"
 using namespace std;
 
-//Îå²Ù×÷º¯Êı
+//äº”æ“ä½œå‡½æ•°
 Table::Table()
 {
-	for (int i = 0; i < 3; i++)//¿¨Í·ÈÔĞè½ÓÈëµ½Á´±í
+	for (int i = 0; i < 3; i++)//å¡å¤´ä»éœ€æ¥å…¥åˆ°é“¾è¡¨
 		CardHead[i] = NULL;
-	for (int i = 0; i < 3; i++)//³õÊ¼»¯³¡ÉÏ·¢Õ¹¿¨Êı×é
+	for (int i = 0; i < 3; i++)//åˆå§‹åŒ–åœºä¸Šå‘å±•å¡æ•°ç»„
 		for (int j = 0; j < 4; j++)
 			OpenCard[i][j] = NULL;
-	for (int i = 0; i < 5; i++)//³õÊ¼»¯¹ó×å¿¨Êı×é
+	for (int i = 0; i < 5; i++)//åˆå§‹åŒ–è´µæ—å¡æ•°ç»„
 		Nobles[i] = NULL;
-	for (int i = 0; i < 4; i++)//³õÊ¼»¯Íæ¼ÒÖ¸Õë
+	for (int i = 0; i < 4; i++)//åˆå§‹åŒ–ç©å®¶æŒ‡é’ˆ
 		Players[i] = NULL;
 	Rubbish = NULL;
 }
 Table::~Table()
 {
-	for (int i = 0; i < 4; i++)//É¾³ıÍæ¼Ò
+	for (int i = 0; i < 4; i++)//åˆ é™¤ç©å®¶
 	{
 		if (Players[i] != NULL)
 		{
@@ -25,34 +25,34 @@ Table::~Table()
 			Players[i] = NULL;
 		}
 	}
-	for (int i = 0; i < 3; i++)//É¾³ı³¡ÉÏ·¢Õ¹¿¨
+	for (int i = 0; i < 3; i++)//åˆ é™¤åœºä¸Šå‘å±•å¡
 		for (int j = 0; j < 4; j++)
 		{
 			if (OpenCard[i][j] != NULL)
 				delete OpenCard[i][j];
 		}
-	for (int i = 0; i < 3; i++)//É¾³ı¹ó×å¿¨
+	for (int i = 0; i < 3; i++)//åˆ é™¤è´µæ—å¡
 		delete Nobles[i];
 }
 void Table::Avail()
 {
-	for (int level = 0;level < 3;level++)//^Èç¹ûÓÅ»¯²»Ó¦µ±³öÏÖ²»Ã÷Êı×Ö
+	for (int level = 0;level < 3;level++)//^å¦‚æœä¼˜åŒ–ä¸åº”å½“å‡ºç°ä¸æ˜æ•°å­—
 	{
 		for (int num = 0;num < 4;num++)
 		{
-			Card* p = OpenCard[level][num];//»ñÈ¡µ±Ç°¿¨Ö¸Õë
-			int NeededGold = 0;//ĞèÒªµÄ½ğ±Ò
-			//^Ã¶¾ÙÀàĞÍ×Ô¶¨ÒåÔËËã·û/º¯Êı
+			Card* p = OpenCard[level][num];//è·å–å½“å‰å¡æŒ‡é’ˆ
+			int NeededGold = 0;//éœ€è¦çš„é‡‘å¸
+			//^æšä¸¾ç±»å‹è‡ªå®šä¹‰è¿ç®—ç¬¦/å‡½æ•°
 			for (int i = 0;i < 5;i++)
 			{
-				if (int r = p->Price[i] - CurrPlayer->Diamonds[i] > 0)//½öÓÃ±¦Ê¯Âò²»Æğ
+				if (int r = p->Price[i] - CurrPlayer->Diamonds[i] > 0)//ä»…ç”¨å®çŸ³ä¹°ä¸èµ·
 				{
 					NeededGold += r;
 				}
 			}
-			if (NeededGold > CurrPlayer->Diamonds[Gold])//ÕæµÄÂò²»Æğ
+			if (NeededGold > CurrPlayer->Diamonds[Gold])//çœŸçš„ä¹°ä¸èµ·
 				continue;
-			AvailCard[level][num] = 1;//¿ÉÂò
+			AvailCard[level][num] = 1;//å¯ä¹°
 		}
 	}
 }
@@ -69,22 +69,20 @@ int Table::CanTake(color co)
 {
 	if (Diamonds[co] == 0)
 		return -1;//ERROR1: This Color ISN'T EXISTED on table!
-    int pDiaNum = CurrPlayer->TotalDiamonds();//playerµÄ±¦Ê¯×ÜÊıÄ¿
+    int pDiaNum = CurrPlayer->TotalDiamonds();//playerçš„å®çŸ³æ€»æ•°ç›®
 	if (pDiaNum + 1 > 10)
 		return -2;//ERROR2: Player's diamonds FULL!
-	int cDiaNum = 0;//ÒÑ¾­ÄÃµÄ
-	for (int i = 1;i < 6;i++)
-		cDiaNum += TakenDiamond[i];
+    int cDiaNum = ShowTakenDiamond();//å·²ç»æ‹¿çš„
 	if (pDiaNum + cDiaNum + 1 > 10)
 		return -3;//ERROR3: Taken will cause OVERFLOW!
-	//ERROR2&3Çø±ğÔÚÓÚ2Ö±½Ó²»¸ø½øÈëTake×´Ì¬£¬3¿É½øÈëTake×´Ì¬µ«ÊÇËùÄÃÊıÁ¿ÏŞÖÆ
+	//ERROR2&3åŒºåˆ«åœ¨äº2ç›´æ¥ä¸ç»™è¿›å…¥TakeçŠ¶æ€ï¼Œ3å¯è¿›å…¥TakeçŠ¶æ€ä½†æ˜¯æ‰€æ‹¿æ•°é‡é™åˆ¶
 	if (cDiaNum + 1 > 3)
 		return -4;//ERROR4: Taken is OVERFLOW!
 	if (TakenDiamond[co] != 0)
 	{
 		if (Diamonds[co] < 4)
 			return -5;//ERROR3: 2 same color CAN'T taken while surplus under 4!
-		if (cDiaNum - TakenDiamond[co])//ÄÃÁËÆäËûÑÕÉ«
+		if (cDiaNum - TakenDiamond[co])//æ‹¿äº†å…¶ä»–é¢œè‰²
 			return -6;//ERROR6: 3 DIFFERENT or 2 SAME color!
 	}
 	TakenDiamond[co]++;
@@ -126,65 +124,65 @@ int Table::TakeMani()
 
 int Table::BuyMani()
 {
-	Card* c = OpenCard[CurrCard[0]][CurrCard[1]];//»ñÈ¡µ±Ç°¿¨Ö¸Õë
-	int NeededGold = 0;//ĞèÒªµÄ½ğ±Ò
-	//^Ã¶¾ÙÀàĞÍ×Ô¶¨ÒåÔËËã·û/º¯Êı
+	Card* c = OpenCard[CurrCard[0]][CurrCard[1]];//è·å–å½“å‰å¡æŒ‡é’ˆ
+	int NeededGold = 0;//éœ€è¦çš„é‡‘å¸
+	//^æšä¸¾ç±»å‹è‡ªå®šä¹‰è¿ç®—ç¬¦/å‡½æ•°
 	for (int i = 0;i < 5;i++)
 	{
-		if (int r = c->Price[i] - CurrPlayer->GetDiamond(color(i)) > 0)//½öÓÃ±¦Ê¯Âò²»Æğ
+		if (int r = c->Price[i] - CurrPlayer->GetDiamond(color(i)) > 0)//ä»…ç”¨å®çŸ³ä¹°ä¸èµ·
 		{
 			NeededGold += r;
-			CurrPlayer->AlterDiamond(color(i), -1, c->Price[i]);//¼õ±¦Ê¯
-			//CurrPlayer->Diamonds[i] -= c->Price[i];//ÉÏÃæÄÇ¾ä³öÎÊÌâÓÃÕâ¸ö
+			CurrPlayer->AlterDiamond(color(i), -1, c->Price[i]);//å‡å®çŸ³
+			//CurrPlayer->Diamonds[i] -= c->Price[i];//ä¸Šé¢é‚£å¥å‡ºé—®é¢˜ç”¨è¿™ä¸ª
 		}
 	}
 	if (NeededGold > CurrPlayer->GetDiamond(Gold))
-		return -1;//ERROR1:½ğ±ÒÎª¸º,ÂòÁË²»ºÏ·¨µÄ¿¨
-	CurrPlayer->AlterDiamond(Gold, -1, NeededGold);//¼õ½ğ±Ò		
-	CurrPlayer->AddRep(c->GetRep());//Ôö¼ÓÉùÍû
-	CurrPlayer->Cards[c->GetBonus()]++;//Ôö¼Ó¿¨£¬ÒÔºó¸ÄÎª¼ÇÂ¼¿¨Æ¬ÄÚÈİ
-	if (CurrCard[1] < 4)//Îª×ÀÃæµÄ¿¨
+		return -1;//ERROR1:é‡‘å¸ä¸ºè´Ÿ,ä¹°äº†ä¸åˆæ³•çš„å¡
+	CurrPlayer->AlterDiamond(Gold, -1, NeededGold);//å‡é‡‘å¸		
+	CurrPlayer->AddRep(c->GetRep());//å¢åŠ å£°æœ›
+	CurrPlayer->Cards[c->GetBonus()]++;//å¢åŠ å¡ï¼Œä»¥åæ”¹ä¸ºè®°å½•å¡ç‰‡å†…å®¹
+	if (CurrCard[1] < 4)//ä¸ºæ¡Œé¢çš„å¡
 		NewCard(CurrCard[0], CurrCard[1]);
 	else
 		CurrPlayer->SetReserved(CurrCard[0], NULL);
-	AddRubbish(c);//ÊÕ¼¯Ö¸Õë
+	AddRubbish(c);//æ”¶é›†æŒ‡é’ˆ
 	return 1;
 }
 /*
-¹ºÂòÊ±Íæ¼ÒÓµÓĞµÄ±¦Ê¯ºìÀûÃ»Ëã½øÈ¥
-¼õµôµÄ±¦Ê¯Èç¹û×îºó·¢ÏÖÂò²»Æğ ÓÖÃ»·¨¼Ó»ØÈ¥
+è´­ä¹°æ—¶ç©å®¶æ‹¥æœ‰çš„å®çŸ³çº¢åˆ©æ²¡ç®—è¿›å»
+å‡æ‰çš„å®çŸ³å¦‚æœæœ€åå‘ç°ä¹°ä¸èµ· åˆæ²¡æ³•åŠ å›å»
 */
 int Table::RetainMani()
 {
-	Card* c = OpenCard[CurrCard[0]][CurrCard[1]];//»ñÈ¡µ±Ç°¿¨Ö¸Õë
+	Card* c = OpenCard[CurrCard[0]][CurrCard[1]];//è·å–å½“å‰å¡æŒ‡é’ˆ
 	int i;
 	for (i = 0;i < 3;i++)
 	{
 		if(CurrPlayer->GetReserved(i)==NULL)
-			CurrPlayer->SetReserved(i, c);//±£Áô
+			CurrPlayer->SetReserved(i, c);//ä¿ç•™
 		break;
 	}
 	if (i >= 3)
-		return -1;//ERROR1:Ã»ÓĞ¿ÕµÄ²Û
-	if (CurrCard[1] < 4)//Îª×ÀÃæµÄ¿¨
+		return -1;//ERROR1:æ²¡æœ‰ç©ºçš„æ§½
+	if (CurrCard[1] < 4)//ä¸ºæ¡Œé¢çš„å¡
 		NewCard(CurrCard[0], CurrCard[1]);
 	else
-		return -2;//ERROR2:±£ÁôµÄ²»Îª×ÀÃæµÄ¿¨
+		return -2;//ERROR2:ä¿ç•™çš„ä¸ä¸ºæ¡Œé¢çš„å¡
 	return 1;
 }
 
-bool Table::IfNoble()//»¹Ã»Ğ´
+bool Table::IfNoble()//è¿˜æ²¡å†™
 {
 
 }
 
-void Table::NobleCome(int)//»¹Ã»Ğ´
+void Table::NobleCome(int)//è¿˜æ²¡å†™
 {
 
 }
 
 
-//Õ¹Ê¾º¯Êı
+//å±•ç¤ºå‡½æ•°
 void Table::ShowCards(Card*** c, int level, int num)
 {
 	for (int i = 0;i < level;i++)
@@ -197,9 +195,9 @@ void Table::ShowCards(Card*** c, int level, int num)
 }
 
 
-bool Table::CreateCard(int lv, int pos)//Éú³É·¢Õ¹¿¨,lvºÍcoordÎª¶şÎ¬Êı×é×ø±ê
+bool Table::CreateCard(int lv, int pos)//ç”Ÿæˆå‘å±•å¡,lvå’Œcoordä¸ºäºŒç»´æ•°ç»„åæ ‡
 {
-    if (lv > 0 && lv < 3 && pos > 0 && pos < 4)//¼ì²é×ø±êÓĞĞ§
+    if (lv > 0 && lv < 3 && pos > 0 && pos < 4)//æ£€æŸ¥åæ ‡æœ‰æ•ˆ
     {
         OpenCard[lv][pos] = new Card;
         return true;
@@ -236,10 +234,10 @@ void Table::AvailNobleInfo(int* n, int length)
 void Table::TakenDiamondInfo(int* d, int length)
 {
 	for (int i = 0;i < length;i++)
-		d[i] = -1;//Îª¿Õ
-	for (int i = 0;i < length;i++)//ÄÃ±¦Ê¯×î¶àÈı¸ö
+		d[i] = -1;//ä¸ºç©º
+	for (int i = 0;i < length;i++)//æ‹¿å®çŸ³æœ€å¤šä¸‰ä¸ª
 	{
-		for (int j = 0;j < 6;j++)//ÑÕÉ«
+		for (int j = 0;j < 6;j++)//é¢œè‰²
 		{
 			if (TakenDiamond[j] == 1)
 			{
@@ -257,7 +255,7 @@ void Table::TakenDiamondInfo(int* d, int length)
 
 Card* Table::CurrCardInfo()
 {
-	if (CurrCard[1] == 4)//Îª×Ô¼º¿ÛµÄ¿¨
+	if (CurrCard[1] == 4)//ä¸ºè‡ªå·±æ‰£çš„å¡
 	{
 		return CurrPlayer->GetReserved(CurrCard[0]);
 	}
@@ -277,4 +275,12 @@ int Table::ShowDiamonds(int co)
 int Table::ShowPlayerDiamonds(int color)
 {
     return CurrPlayer->ShowDiamond(color);
+}
+
+int Table::ShowTakenDiamond() const
+{
+    int cDiaNum = 0;//å·²ç»æ‹¿çš„
+    for (int i = 0;i < 6;i++)
+        cDiaNum += TakenDiamond[i];
+    return cDiaNum;
 }
