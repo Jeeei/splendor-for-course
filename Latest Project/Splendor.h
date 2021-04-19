@@ -145,6 +145,7 @@ public:
     int ShowDiamonds(int);//显示场上剩余宝石，界面输出接口
     int ShowPlayerDiamonds(int);//显示玩家拥有宝石，接口
     int ShowRep() { return CurrPlayer->ShowRep(); }//显示玩家声望
+    int ShowTakenDiamond() const;
 
 private:
 	//桌面拥有的东西
