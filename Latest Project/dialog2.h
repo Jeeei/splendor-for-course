@@ -1,6 +1,6 @@
 #ifndef DIALOG2_H
 #define DIALOG2_H
-
+#include "Splendor.h"
 #include <QDialog>
 
 namespace Ui {
@@ -19,11 +19,12 @@ public:
     void showGreen();
     void showBlue();
     void showWhite();
-
+    void selectDiamond(int,color);
+    void clearDiamond();
 private:
     Ui::Dialog2 *ui;
-    int choosen;//已选择宝石数
-
+    int selected[3]={-1,-1,-1};//已选择宝石数
+    int numDiamond = 0;
 signals:
     void dialog2OK();
 
