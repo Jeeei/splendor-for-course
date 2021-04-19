@@ -238,28 +238,162 @@ void gameInterface::on_card3_4_clicked(bool checked)
 void gameInterface::on_selectBlack_clicked()
 {
     //点击黑币
-    dialog2->showBlack();
+    switch(table->CanTake(Black))
+    {
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个同颜色的
+        break;
+    case 1:
+        //符合规则
+        dialog2->selectDiamond(table->ShowTakenDiamond(),Black);
+        dialog2->showBlack();
+        break;
+    default:
+        break;
+    }
 }
-
 void gameInterface::on_selectRed_clicked()
 {
     //点击红币
-    dialog2->showRed();
+    switch(table->CanTake(Red))
+    {
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个同颜色的
+        break;
+    case 1:
+        //符合规则
+        dialog2->selectDiamond(table->ShowTakenDiamond(),Red);
+        dialog2->showRed();
+        break;
+    default:
+        break;
+    }
 }
 void gameInterface::on_selectGreen_clicked()
 {
     //点击绿币
-    dialog2->showGreen();
+    switch(table->CanTake(Green))
+    {
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个同颜色的
+        break;
+    case 1:
+        //符合规则
+        dialog2->selectDiamond(table->ShowTakenDiamond(),Green);
+        dialog2->showGreen();
+        break;
+    default:
+        break;
+    }
 }
 void gameInterface::on_selectBlue_clicked()
 {
     //点击蓝币
-    dialog2->showBlue();
+    switch(table->CanTake(Blue))
+    {
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个同颜色的
+        break;
+    case 1:
+        //符合规则
+        dialog2->selectDiamond(table->ShowTakenDiamond(),Blue);
+        dialog2->showBlue();
+        break;
+    default:
+        break;
+    }
 }
 void gameInterface::on_selectWhite_clicked()
 {
     //点击白币
-    dialog2->showWhite();
+    switch(table->CanTake(White))
+    {
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个同颜色的
+        break;
+    case 1:
+        //符合规则
+        dialog2->selectDiamond(table->ShowTakenDiamond(),White);
+        dialog2->showWhite();
+        break;
+    default:
+        break;
+    }
 }
 
 
