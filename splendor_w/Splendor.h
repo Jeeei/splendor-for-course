@@ -1,0 +1,211 @@
+#pragma once
+#include <iostream>
+#include <fstream>
+#include <QString>
+using namespace std;
+enum color { Red, Green, Blue, White, Black, Gold };//宝石颜色
+enum Manipulation { None, Take, Buy, Retain, SelectNoble };//5个操作暂无动作、拿宝石、买卡、扣卡、选贵族using namespace std;
+class Card //发展卡类
+{
+	friend class Player;
+	friend class Table;//给予访问权限
+    friend ofstream& operator<<(ofstream&, Card&);//储存card信息到文件
+    friend ifstream& operator>>(ifstream&, Card&);//从文件中读出信息
+public:
+	Card();
+    Card(QString, color, int*, int);//目前直接传参生成卡片，贵族等
+	color GetBonus()const;//返回bonus 
+	void GetPrice(int*)const;//返回在传入的int*
+	int GetRep()const;//返回reputation
+    Card* next;
+
+	//显示函数
+    QString GetAddress()const{return PicAddr;}//返回图片地址的函数
+
+private:
+    QString PicAddr;//图片的地址 "NULL"为未加载图片
+	color Bonus;//卡所带宝石颜色（红利）
+	int Price[6];//购买发展卡所需宝石的数量/* 用price[color]访问*/
+    int Rep;//声望点数
+};
+class Player;
+class Noble//贵族类  
+{
+    friend ofstream& operator<<(ofstream&, Noble&);
+    friend ifstream& operator>>(ifstream&, Noble&);
+public:
+	Noble();
+    Noble(QString, int rep, int* con);
+	int GetRep()const;//显示声望点数
+	void GetCondition(int*)const;
+	bool CanVisit(Player*);//检查能否访问玩家
+
+	//显示函数
+    QString GetAddress()const{return PicAddr;}//返回图片地址的函数
+private:
+    QString PicAddr;
+	int Rep;//声望点数
+	int Condition[6];//贵族到访的宝石条件
+	
+};
+
+class Player//玩家类，储存玩家的信息
+{
+	friend class Table;//给予访问权限
+    friend ofstream& operator<<(ofstream&, Player&);//存取了所有数据，用于保存进度，初始化时不能直接调用
+    friend ifstream& operator>>(ifstream&, Player&);
+public:
+	Player();
+	~Player();
+    //Set函数
+	bool Take(int*, int l = 6);//拿宝石 传一个在Table.Take()中认定合法的Diamond[6]
+	bool Buy(Card*);//买卡 
+	bool Reserve(Card*, bool);//扣卡,bool参数表示场上是否有黄金剩余,返回player宝石是否可拿
+    void SetReserved(int num, Card* c) {Reserved[num] = c;}
+    void AddRep(int r) { Rep += r; }
+    bool AlterDiamond(color, int, int);//颜色，符号（+为1，-为-1），个数
+    bool NobleCome(Noble*);//贵族到访
+    bool SetImg(QString);
+
+    //Get函数
+    void GetDiamonds(int*);//返回宝石
+    int GetDiamond(color co) { return Diamonds[co]; }
+	void GetBonus(int*);//返回玩家拥有的红利数 /*Cards暂时只保存了颜色*/
+    Card* GetReserved(int num) {
+        if (num < 3)return Reserved[num];
+        else return NULL;
+    }
+	bool CanBuy(Card* card);//检查玩家能否买卡
+	bool CanReserve()const;//检查玩家能否扣卡
+
+
+
+	
+	//展示函数
+	int ShowRep() { return Rep; }
+	void ShowDiamond(int*, int length = 6);
+    int ShowDiamond(int);//增加重载 只返回单个颜色的宝石数
+	void ShowCards(int*, int length = 5);
+	void ShowReserved(Card**, int length = 3);//传入为Card的指针数组
+    QString GetAddress()const{return PicAddr;}//返回图片地址的函数
+
+protected:
+    QString PicAddr;
+	int Diamonds[6];//玩家拥有的宝石数
+	int Rep;//玩家拥有的声望点数
+	Noble* Nobles[5];//玩家拥有的贵族卡
+	int Cards[5];//玩家拥有的发展卡/*暂时不储存卡片信息只保存不同颜色的数量*/
+	Card* Reserved[3];
+	int TotalDiamonds()const;//返回玩家拥有全部宝石数
+
+};
+
+
+class Table
+{
+public:
+	Table();
+	~Table();
+	bool Start();//与用户交互初始化 先生成2个Players并调用Init 后续补充其他选项
+	bool Init();//与用户无关初始化 可被Start()调用 生成固定的Cards和Nobles链表
+	int Round();//回合进行函数，对每个玩家调用Operate()，并在之后进行相应判断操作
+
+    bool NewCard(int level, int num);//翻开新的卡
+    bool CreateCard();//洗牌(Init里面调用）
+    bool CreateNoble();//发贵族(Init里面调用）
+
+    //五操作函数 （Can判断操作是否可行并更改缓冲区，Mani执行更改）
+	//Can-系列返回1表示可买，错误代码<0,返回1后更改currmani
+	void Avail();//判断桌面上当前玩家可购买的卡
+	void NoneMani();//取消操作后显示桌面
+	int CanTake(color);//点击宝石后调用返回当前宝石是否可拿
+	int UnTake(color);//点击暂时选中宝石放回桌面
+	int CanBuy(int, int);//点击卡片调用返回当前卡片是否可买
+	int CanRetain(int, int);//点击卡片调用返回当前卡片是否可扣
+	int TakeMani();//点击确定后判断当前操作为Take执行
+	int BuyMani();//点击确定后判断当前操作为Buy执行
+	int RetainMani();//点击确定后判断当前操作为Retain执行
+	bool IfNoble();//三操作点击确认后判断是否执行选贵族操作并判断
+	void NobleCome(int);//传入被选择的Noble编号
+
+
+	//展示函数，获取当前状态后，查询绘图所需信息
+	//需要获取的信息为数组的需要传入一个数组指针获得，其余由返回值获得
+    //1.Mani相关函数
+    void Next();//当前玩家操作全部结束后调用刷新信息*
+	Manipulation GetMani() { return CurrMani; }//获取当前状态以获取信息绘图
+	void AlterMani(Manipulation m) { CurrMani = m; }//*是否更改操作由返回值决定
+
+    //2.获得table上显示的数据
+    //diamond的image不储存在这，除非把它升级成个struct
+    QString CardImg(int level, int num);//如果不存在返回'\0'
+    QString NobleImg(int num);
+    QString PlayerImg(int num);
+    int ShowDiamonds(int co);//显示场上剩余宝石,co：颜色
+    int ShowPlayerDiamonds(int co, int player = -1);//显示玩家拥有宝石，（co:颜色，player：玩家序号，默认当前player)
+    int ShowRep(int player = -1); //显示玩家声望(player：玩家序号，默认当前player)
+
+    //3.卡/贵族可买高亮
+    int AvailCardInfo(int level, int num){return AvailCard[level][num];}//返回第[level][num]是否avail //从0开始
+    int AvailNobleInfo(int num){return AvailNoble[num];}//返回第[num]是否avail //从0开始
+	void AvailCardInfo(int**, int level = 3, int num = 4);//获取当前可买卡信息
+	void AvailNobleInfo(int*, int length = 5);//获取当前可拿贵族信息
+
+    //4.Take操作数据
+    void TakenDiamondInfo(int*, int length = 3);//获取当前拿取的金币或宝石，返回int数组用color(int)转换为颜色，-1为空 //没用到
+    int ShowTakenDiamond() const;//返回已经拿了的宝石数
+
+    //5.Retain&Buy
+	Card* CurrCardInfo();//获取当前将要拿或扣卡的
+
+    //6.ChooseNoble
+    Noble* CurrNobleInfo();//IfNoble()=1时调用，获取当前可选的Noble
+
+    //7.初始化
+    int GetSetPlayerNum(){return sPlayerNum;}
+    QString GetPlayerImg(int playernum);//参数范围1-当前玩家数
+
+    //未归类函数
+    void ClearTakenDiamond();//重置已经拿了的宝石数组
+
+private:
+	//桌面拥有的东西
+	Card* CardHead[3];//未翻开的卡 /*见注释1
+    Card* OpenCard[3][4];//翻开的卡
+	Noble* Nobles[5];//使用的贵族
+	int Diamonds[6];//桌面上的宝石剩余
+	Player* Players[4];//玩家
+    int PlayerNum;//玩家人数
+
+    //初始化临时变量 //还没接起来先不管
+    int sPlayerNum;//目前选择的玩家人数
+    QString sPlayerImg[4];//玩家图片
+
+    //游戏过程临时变量
+	Player* CurrPlayer;//当前玩家
+	Manipulation CurrMani;//当前操作
+    int CurrNoble;//玩家选中的贵族 0-4代表桌面上的贵族
+    int AvailNoble[5];//当前玩家可获取的贵族
+    int CurrCard[2];//-1表示未选中
+        //当前正在购买或者扣的卡的序号（0-2，0-3）为桌面的卡，（x，4）为自己扣卡的第x+1张
+    int AvailCard[3][4];//玩家可购买的卡，1为可以，0为不可
+    int TakenDiamond[6];//标记每个宝石被拿的数量
+	};
+
+/*注释1：每生成一个Card或者Noble就创建一个指向其的指针，当Table或Player拥有
+Card或Noble时，用其指针数组中的指针指向该Card或者Noble，保证一个Card或者Noble
+同时只有一个指针指向它
+注释2：实参首字母大写，形参全小写
+
+先把啥搞出来：
+除Table以外类的成员函数和Table.Init() Table.Start()
+目前直接传参初始化卡片，贵族，桌面，文件流来得及就补
+
+*/
+
+
+
+
+
+
+

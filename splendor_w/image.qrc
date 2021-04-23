@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>images/cards/green_1/1.png</file>
+        <file>images/cards/green_1/2.png</file>
+        <file>images/cards/green_1/3.png</file>
+        <file>images/cards/green_1/4.png</file>
+        <file>images/cards/green_1/5.png</file>
+        <file>images/cards/yellow_2/1.png</file>
+        <file>images/cards/yellow_2/2.png</file>
+        <file>images/cards/yellow_2/3.png</file>
+        <file>images/cards/yellow_2/4.png</file>
+        <file>images/cards/yellow_2/5.png</file>
+        <file>images/cards/blue_3/1.png</file>
+        <file>images/cards/blue_3/2.png</file>
+        <file>images/cards/blue_3/3.png</file>
+        <file>images/cards/blue_3/4.png</file>
+        <file>images/cards/blue_3/5.png</file>
+        <file>images/background.png</file>
+        <file>images/bb.png</file>
+        <file>images/bbb.png</file>
+        <file>images/black.PNG</file>
+        <file>images/blue.PNG</file>
+        <file>images/green.PNG</file>
+        <file>images/red.PNG</file>
+        <file>images/white.PNG</file>
+    </qresource>
+</RCC>
