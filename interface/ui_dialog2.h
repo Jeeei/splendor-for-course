@@ -34,6 +34,9 @@ public:
         Dialog2->resize(562, 235);
         Dialog2->setMinimumSize(QSize(562, 235));
         Dialog2->setMaximumSize(QSize(562, 235));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/\346\211\223\345\274\200\347\225\214\351\235\242.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Dialog2->setWindowIcon(icon);
         OK = new QToolButton(Dialog2);
         OK->setObjectName(QStringLiteral("OK"));
         OK->setGeometry(QRect(200, 180, 151, 41));

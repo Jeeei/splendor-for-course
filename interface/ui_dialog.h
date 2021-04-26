@@ -34,6 +34,9 @@ public:
         Dialog->resize(342, 383);
         Dialog->setMinimumSize(QSize(342, 383));
         Dialog->setMaximumSize(QSize(342, 383));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/\346\211\223\345\274\200\347\225\214\351\235\242.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Dialog->setWindowIcon(icon);
         Dialog->setStyleSheet(QStringLiteral(""));
         label = new QLabel(Dialog);
         label->setObjectName(QStringLiteral("label"));

@@ -1,3 +1,4 @@
+
 #-------------------------------------------------
 #
 # Project created by QtCreator 2021-04-06T21:27:02
@@ -27,17 +28,26 @@ SOURCES += \
         main.cpp \
         gameinterface.cpp \
     dialog.cpp \
-    dialog2.cpp
+    dialog2.cpp \
+    mainsurface.cpp \
+    rule.cpp
+
 
 HEADERS += \
         gameinterface.h \
     dialog.h \
-    dialog2.h
+    dialog2.h \
+    mainsurface.h \
+    rule.h
 
 FORMS += \
         gameinterface.ui \
     dialog.ui \
-    dialog2.ui
+    dialog2.ui \
+    mainsurface.ui \
+    rule.ui
 
 RESOURCES += \
     pictures.qrc
+
+CONFIG += resources_big

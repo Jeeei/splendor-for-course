@@ -244,5 +244,8 @@ void gameInterface::on_black_have_textChanged()
 
 void gameInterface::on_re_clicked()
 {
-
+    mainSurface *mainS=new mainSurface;
+    //this->close();
+    mainS->show();
+    delete this;
 }

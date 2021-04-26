@@ -18,7 +18,7 @@ mainSurface::~mainSurface()
 void mainSurface::on_start_button_clicked()
 {
     this->close();
-    gameSurface=new gameInterface();
+    gameInterface *gameSurface=new gameInterface;
     gameSurface->show();
 }
 

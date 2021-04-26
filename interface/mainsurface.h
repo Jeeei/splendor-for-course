@@ -23,8 +23,6 @@ private slots:
 
 private:
     Ui::mainSurface *ui;
-
-    gameInterface *gameSurface;
 };
 
 #endif // MAINSURFACE_H
