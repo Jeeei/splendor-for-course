@@ -2,10 +2,14 @@
 using namespace std;
 Noble::Noble()
 {
-	//empty
+    PicAddr = "NULL";
+    Rep=0;
+    for(int i=0;i<6;i++)
+        Condition[i]=0;
 }
-Noble::Noble(int rep, int* con)
+Noble::Noble(QString s, int rep, int* con)
 {
+    PicAddr = s;
 	Rep = rep;
 	for (int i = 0; i < 5; i++)
 		Condition[i] = *(con + i);
@@ -33,4 +37,20 @@ bool Noble::CanVisit(Player* player)//检查能否访问玩家
 			return false;
 	}
 	return true;
+}
+
+
+ofstream& operator<<(ofstream& fout, Noble& n)
+{
+     fout.write(reinterpret_cast<char*>(&n.PicAddr), sizeof(n.PicAddr));
+     fout.write(reinterpret_cast<char*>(&n.Rep), sizeof(n.Rep));
+     fout.write(reinterpret_cast<char*>(&n.Condition), sizeof(n.Condition));
+     return fout;
+}
+ifstream& operator>>(ifstream& fin, Noble& n)
+{
+    fin.read(reinterpret_cast<char*>(&n.PicAddr), sizeof(n.PicAddr));
+    fin.read(reinterpret_cast<char*>(&n.Rep), sizeof(n.Rep));
+    fin.read(reinterpret_cast<char*>(&n.Condition), sizeof(n.Condition));
+    return fin;
 }
