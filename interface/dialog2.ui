@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="pictures.qrc">
+    <normaloff>:/images/打开界面.png</normaloff>:/images/打开界面.png</iconset>
+  </property>
   <widget class="QToolButton" name="OK">
    <property name="geometry">
     <rect>
@@ -90,6 +94,8 @@ background-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="pictures.qrc"/>
+ </resources>
  <connections/>
 </ui>

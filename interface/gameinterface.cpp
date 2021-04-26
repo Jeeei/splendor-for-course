@@ -1,5 +1,6 @@
 #include "gameinterface.h"
 #include "ui_gameinterface.h"
+#include "mainsurface.h"
 #include <iostream>
 #include <QtGlobal>
 using namespace std;
@@ -15,13 +16,14 @@ gameInterface::gameInterface(QWidget *parent) :
     //ui->card2_1->setStyleSheet("border-image:url(:/images/card/green_low/1.png)");
 
     dialog = new Dialog(this);//购买窗口
-    dialog->setModal(false);
+    //dialog->setModal(true);
     dialog2=new Dialog2(this);//拿币窗口
 
     connect(dialog, SIGNAL(DialogPurchase()), SLOT(DialogPurchaseSlot()));// 把子窗口的信号连接到父窗口
     connect(dialog,SIGNAL(DialogCancel()),SLOT(DialogCancelSlot()));
 
     connect(dialog2,SIGNAL(dialog2OK()),SLOT(dialog2OKSlot()));
+
 }
 
 gameInterface::~gameInterface()
@@ -119,7 +121,7 @@ void gameInterface::on_card1_1_clicked()
     //background-color: rgba(255, 255, 224, 10%)；//半透明的样式表代码
     //卡1的点击回馈
     color=1;
-    dialog->show();
+    dialog->exec();
     dialog->showImageChanged(color);
 }
 
@@ -235,6 +237,12 @@ void gameInterface::on_red_have_textChanged()
 }
 
 void gameInterface::on_black_have_textChanged()
+{
+
+}
+
+
+void gameInterface::on_re_clicked()
 {
 
 }

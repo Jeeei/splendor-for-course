@@ -23,5 +23,7 @@
         <file>../green.PNG</file>
         <file>../red.PNG</file>
         <file>../white.PNG</file>
+        <file>../打开界面.png</file>
+        <file>../rule_background.png</file>
     </qresource>
 </RCC>
