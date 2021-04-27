@@ -425,7 +425,93 @@ bool Table::NewCard(int level, int num)
 }
 bool Table::CreateCard()
 {
+    char addr[90][40];
+        int bonus[90];
+        int price[90], rep[90];
+        int num[6] = { 8 };//num[color]
+        Card* randHigh[20] = {nullptr}, *randMid[30] = {nullptr},
+            *randLow[40] = {nullptr};
+        ifstream c("cards.dat", ios::in | ios::binary);
+        cout << c.is_open() << endl;//dat读出来
+        for (int i = 0;i < 90;i++)//20-40-30
+        {
+            c.read(reinterpret_cast<char*>(&addr[i]), sizeof(addr[i]));
+            c.read(reinterpret_cast<char*>(&bonus[i]), sizeof(bonus[i]));
+            c.read(reinterpret_cast<char*>(&price[i]), sizeof(price[i]));
+            c.read(reinterpret_cast<char*>(&rep[i]), sizeof(rep[i]));
+            for (int j = 5;j >= 0;j--)
+            {
+                num[j] = price[i] % 10;
+                price[i] -= num[j];
+                price[i] /= 10;
+            }
+            srand(time(NULL));
+            if(i < 20)//High
+            {
+                int sit = rand()%20;
+                while(randHigh[sit]!=nullptr)
+                    sit = rand()%20;
+                randHigh[sit] = new Card;
+                randHigh[sit]->PicAddr = QString(QLatin1String(addr[i]));//QString(QLatin1String(ch));
+                randHigh[sit]->Rep = rep[i];
+                randHigh[sit]->Bonus = color(bonus[i]);
+                for(int k=0; k<6; k++)
+                {
+                   randHigh[sit]->Price[k] = num[k];
+                }
+                //链表连连看
+                Card* cc = CardHead[2] = randHigh[0];
+                for (int k=0; k<19; k++)
+                {
+                   cc->next=randHigh[k+1];
+                   cc=cc->next;
+                }
+            }
+            else if(i < 60)//Low
+            {
+                int sit = rand()%40;
+                while(randMid[sit]!=nullptr)
+                    sit = rand()%40;
+                randMid[sit] = new Card;
+                randMid[sit]->PicAddr = QString(QLatin1String(addr[i]));//QString(QLatin1String(ch));
+                randMid[sit]->Rep = rep[i];
+                randMid[sit]->Bonus = color(bonus[i]);
+                for(int k=0; k<6; k++)
+                {
+                   randMid[sit]->Price[k] = num[k];
+                }
+                //链表连连看
+                Card* cc = CardHead[0] = randMid[0];
+                for (int k=0; k<39; k++)
+                {
+                   cc->next=randMid[k+1];
+                   cc=cc->next;
+                }
+            }
+            else//Mid
+            {
+                int sit = rand()%30;
+                while(randLow[sit]!=nullptr)
+                    sit = rand()%30;
+                randLow[sit] = new Card;
+                randLow[sit]->PicAddr = QString(QLatin1String(addr[i]));//QString(QLatin1String(ch));
+                randLow[sit]->Rep = rep[i];
+                randLow[sit]->Bonus = color(bonus[i]);
+                for(int k=0; k<6; k++)
+                {
+                   randLow[sit]->Price[k] = num[k];
+                }
+                //链表连连看
+                Card* cc = CardHead[1] = randLow[0];
+                for (int k=0; k<19; k++)
+                {
+                   cc->next=randLow[k+1];
+                   cc=cc->next;
+                }
+            }
+        }
 
+        c.close();
 }
 bool Table::CreateNoble()
 {

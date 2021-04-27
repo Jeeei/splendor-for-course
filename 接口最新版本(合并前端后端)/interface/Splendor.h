@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <QString>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 enum color { Red, Green, Blue, White, Black, Gold };//宝石颜色
 enum Manipulation { None, Take, Buy, Retain, SelectNoble };//5个操作暂无动作、拿宝石、买卡、扣卡、选贵族using namespace std;

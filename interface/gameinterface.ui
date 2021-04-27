@@ -721,6 +721,24 @@ border-radius:30px;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QToolButton" name="changeMan">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>600</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 12pt &quot;华文彩云&quot;;
+border-radius:10px;
+background-color: rgb(207, 161, 147);</string>
+   </property>
+   <property name="text">
+    <string>结束回合</string>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>card1_1</zorder>
   <zorder>card1_2</zorder>
@@ -757,6 +775,7 @@ border-radius:30px;</string>
   <zorder>gradePeople1</zorder>
   <zorder>toolButton</zorder>
   <zorder>re</zorder>
+  <zorder>changeMan</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
