@@ -48,6 +48,9 @@ FORMS += \
     rule.ui
 
 RESOURCES += \
-    pictures.qrc
+    pictures.qrc \
+    music.qrc
 
 CONFIG += resources_big
+
+QT += multimedia

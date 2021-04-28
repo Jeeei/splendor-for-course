@@ -3,6 +3,7 @@
 #include "mainsurface.h"
 #include <iostream>
 #include <QtGlobal>
+#include <QSound>
 using namespace std;
 
 gameInterface::gameInterface(QWidget *parent) :
@@ -11,9 +12,11 @@ gameInterface::gameInterface(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ui->card1_1->setStyleSheet("border-image:url(:/images/card/blue-high/1.png)");
-    //ui->card2_1->setStyleSheet("border-image:url(:/images/card/yellow_middle/1.png)");
-    //ui->card2_1->setStyleSheet("border-image:url(:/images/card/green_low/1.png)");
+    //背景音乐
+    QSound *bsound=new QSound(":/music/背景音乐.wav",this);
+    bsound->play();
+    bsound->setLoops(-1);//循环次数，-1代表一致循环
+
 
     dialog = new Dialog(this);//购买窗口
     //dialog->setModal(true);
