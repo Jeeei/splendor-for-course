@@ -237,7 +237,9 @@ Makefile: ../splendor/splendor.pro ../../../Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/wi
 		../splendor/splendor.pro \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/qtmaind.prl \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Widgets.prl \
+		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Multimedia.prl \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Gui.prl \
+		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Network.prl \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\splendor\splendor.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -415,7 +417,9 @@ Makefile: ../splendor/splendor.pro ../../../Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/wi
 ../splendor/splendor.pro:
 ../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/qtmaind.prl:
 ../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Widgets.prl:
+../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Multimedia.prl:
 ../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Gui.prl:
+../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Network.prl:
 ../../../Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\splendor\splendor.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
