@@ -4,8 +4,10 @@
 #
 #-------------------------------------------------
 QT       += core gui
+QT  +=  multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 UI_DIR=./UI
+CONFIG += resources_big
 TARGET = splendor
 TEMPLATE = app
 
@@ -28,26 +30,31 @@ SOURCES += \
     Table1.cpp \
         main.cpp \
         gameinterface.cpp \
-    dialog.cpp \
-    dialog2.cpp \
     mainsurface.cpp \
+<<<<<<< HEAD
     rule.cpp \
     save.cpp
+=======
+    pickcard.cpp \
+    pickcoin.cpp \
+    rule.cpp
+>>>>>>> 6b4578099f349b9a0017a0831df40d5e4ffeb174
 
 HEADERS += \
     Splendor.h \
         gameinterface.h \
-    dialog.h \
-    dialog2.h \
     mainsurface.h \
+    pickcard.h \
+    pickcoin.h \
     rule.h
 
 FORMS += \
         gameinterface.ui \
-    dialog.ui \
-    dialog2.ui \
     mainsurface.ui \
+    pickcard.ui \
+    pickcoin.ui \
     rule.ui
 
 RESOURCES += \
-    pictures.qrc
+    pictures.qrc \
+    music.qrc

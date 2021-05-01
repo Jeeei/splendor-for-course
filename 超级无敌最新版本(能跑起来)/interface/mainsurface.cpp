@@ -7,6 +7,7 @@ mainSurface::mainSurface(QWidget *parent) :
     ui(new Ui::mainSurface)
 {
     ui->setupUi(this);
+    setWindowTitle("Splendor MainSurface");
     gameSurface = nullptr;
     r = nullptr;
 }
@@ -23,7 +24,8 @@ mainSurface::~mainSurface()
 
 void mainSurface::on_start_button_clicked()
 {
-    gameSurface = new gameInterface(this);
+    gameSurface = new gameInterface();
+    this->close();
     gameSurface->show();
 }
 

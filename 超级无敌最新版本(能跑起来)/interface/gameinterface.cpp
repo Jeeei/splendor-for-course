@@ -3,6 +3,7 @@
 #include <iostream>
 #include <QtGlobal>
 #include <QDebug>
+#include <QSound>
 using namespace std;
 
 gameInterface::gameInterface(QWidget *parent) :
@@ -10,21 +11,29 @@ gameInterface::gameInterface(QWidget *parent) :
     ui(new Ui::gameInterface)
 {
     ui->setupUi(this);
+    setWindowTitle("Splendor");
     //qDebug()<<"gameinterface created."<<endl;
     //ui->card1_1->setStyleSheet("border-image:url(:/images/card/blue-high/1.png)");
     //ui->card2_1->setStyleSheet("border-image:url(:/images/card/yellow_middle/1.png)");
     //ui->card2_1->setStyleSheet("border-image:url(:/images/card/green_low/1.png)");
 
-    dialog = new Dialog(this);//购买窗口    
-    dialog2 = new Dialog2(this);//拿币窗口
+    PickCard = new pickCard(this);//买卡窗口
+    PickCoin = new pickCoin(this);//拿宝石窗口
+
+    //背景音乐
+    QSound *bsound = new QSound(":/music/BackgroundMusic.wav",this);
+    bsound->play();
+    bsound->setLoops(-1);//循环次数，-1代表一致循环
+
 
     //购买卡片的窗口信号连接
-    connect(dialog, SIGNAL(DialogPurchase()), SLOT(DialogPurchaseSlot()));// 把子窗口的信号连接到父窗口
-    connect(dialog,SIGNAL(DialogCancel()),SLOT(DialogCancelSlot()));
+    connect(PickCard, SIGNAL(Purchase()), SLOT(PickCard_PurchaseSlot()));
+    connect(PickCard, SIGNAL(PickCardCancel()), SLOT(PickCard_CancelSlot()));
+
     //拿宝石的窗口信号连接
-    connect(dialog2,SIGNAL(dialog2OK()),SLOT(dialog2OKSlot()));
-    connect(dialog2,&Dialog2::dialog2close,this,&gameInterface::dialog2CancelSlot);//这也是连接信号的写法
-    connect(dialog2,SIGNAL(Cancel_selected(color)),SLOT(dialog2CancelTake(color)));
+    connect(PickCoin,SIGNAL(Pick_OK()),SLOT(PICK_OKSlot()));
+    connect(PickCoin,SIGNAL(Pick_Close()),SLOT(PICK_CancelSlot()));
+    connect(PickCoin,SIGNAL(Pick_UnTake(color)),SLOT(PICK_UnTake(color)));
 
     //后端Table的初始化
     table = new Table;
@@ -38,16 +47,16 @@ gameInterface::~gameInterface()
     //qDebug()<<"gameinterface deleted."<<endl;
     delete ui;
     delete table;
+    delete PickCard;
+    delete PickCoin;
 }
 
-void gameInterface::DialogPurchaseSlot()
+void gameInterface::PickCard_PurchaseSlot()
 {
     // 父窗口用于接收子窗口信号的slot
     if(table->CanBuy())//买得起当前卡片
     {
         table->BuyMani();
-        if(dialog2->getStatus())
-            dialog2->close();
         table->SetCurrCard(-1,-1);
         table->Next();
     }//买不起啊干
@@ -55,44 +64,35 @@ void gameInterface::DialogPurchaseSlot()
     textChanged();//重新显示信息
 }
 
-void gameInterface:: DialogCancelSlot()
+void gameInterface:: PickCard_CancelSlot()
 {
     table->AlterMani(None);
     textChanged();//重新显示信息
 }
 
-void gameInterface::dialog2OKSlot()
+void gameInterface::PICK_OKSlot()
 {
     table->TakeMani();
     table->AlterMani(None);
-    textChanged();//重新显示信息
+//    textChanged();//重新显示信息
     table->Next();
     textChanged();//重新显示信息
 
 }
 
-void gameInterface::dialog2CancelSlot()
+void gameInterface::PICK_CancelSlot()
 {
     table->AlterMani(None);
     table->ClearTakenDiamond();//重置宝石
     textChanged();//重新显示信息
-
 }
 
-void gameInterface::dialog2CancelTake(enum color co)
+void gameInterface::PICK_UnTake(enum color co)
 {
     table->UnTake(co);
     textChanged();//重新显示信息
 }
 
-void gameInterface::on_toolButton_clicked()
-{
-    //"我要拿币"
-    table->AlterMani(Take);
-    dialog2->OpenStatus();
-    dialog2->show();
-    //dialog2->setWindowFlags(dialog2->windowFlags() | Qt::WindowStaysOnTopHint);
-}
 void gameInterface::textChanged()
 {
     //显示玩家拥有宝石
@@ -195,8 +195,8 @@ void gameInterface::on_white_num_textChanged()
 void gameInterface::AnyCardClicked(int level, int num)
 {
     table->SetCurrCard(2 - level,num);
-    dialog->show();
-    dialog->showImageChanged(table->CardImg(2 - level,num));
+    PickCard->show();
+    PickCard->showCard(table->CardImg(2 - level,num));
 }
 
 void gameInterface::on_card1_1_clicked()
@@ -252,7 +252,6 @@ void gameInterface::on_card3_1_clicked()
 {
     //卡9的点击回馈
     AnyCardClicked(2,0);
-    //ui->card3_1->setStyleSheet("border-image:url(:/images/card/green-low/5.png)");
 }
 
 void gameInterface::on_card3_2_clicked()
@@ -276,42 +275,41 @@ void gameInterface::on_card3_4_clicked()
 
 void gameInterface::AnyDiamondClicked(enum color co)
 {
-    if(dialog2->getStatus())//如果买宝石窗口开启
+    //qDebug() <<"table return: "<< a << endl;
+    switch(table->CanTake(co))
     {
-        //qDebug() <<"table return: "<< a << endl;
-        switch(table->CanTake(co))
-        {
-        case -1:
-            //场上已经没有该宝石
-            break;
-        case -2:
-            //宝石满10个
-            break;
-        case -3:
-            //加上已拿宝石满10个
-            break;
-        case -4:
-            //拿超过了三个
-            break;
-        case -5:
-            //场上该颜色宝石少于4个，不能拿两个
-            break;
-        case -6:
-            //拿了两个以上同颜色
-            break;
-        case -7:
-            //拿了两个同颜色和一个其他颜色
-            break;
-        case 1:
-             //符合规则
-             dialog2->selectDiamond(co);//包含显示函数
-             break;
-        default:
-             break;
-        }
-        //qDebug()<<"text changed!";
-        textChanged();
+    case -1:
+        //场上已经没有该宝石
+        break;
+    case -2:
+        //宝石满10个
+        break;
+    case -3:
+        //加上已拿宝石满10个
+        break;
+    case -4:
+        //拿超过了三个
+        break;
+    case -5:
+        //场上该颜色宝石少于4个，不能拿两个
+        break;
+    case -6:
+        //拿了两个以上同颜色
+        break;
+    case -7:
+        //拿了两个同颜色和一个其他颜色
+        break;
+    case 1:
+        //符合规则
+        table->AlterMani(Take);
+        PickCoin->show();
+        PickCoin->selectDiamond(co);//包含显示函数
+        break;
+    default:
+        break;
     }
+    //qDebug()<<"text changed!";
+    textChanged();
 }
 
 void gameInterface::on_selectBlack_clicked()

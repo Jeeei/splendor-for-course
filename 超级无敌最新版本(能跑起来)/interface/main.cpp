@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     mainSurface w;
     w.setFixedSize(1293,765);
-    //w.setFixedSize(1400,900);
+    //w.setFixedSize(1400,800);
     w.show();
     //qDebug()<<"PicAddr: ";
     return a.exec();

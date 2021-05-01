@@ -5,9 +5,9 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
-#include "dialog.h"
-#include "dialog2.h"
 #include "Splendor.h"
+#include "pickcoin.h"
+#include "pickcard.h"
 
 namespace Ui {
 class gameInterface;
@@ -22,15 +22,8 @@ public:
     ~gameInterface();
 
 private slots:
+
     void on_card1_1_clicked();
-
-    void on_people1_clicked();
-
-    void on_people2_clicked();
-
-    void on_require1_1_1_textChanged();
-
-    void on_require1_1_3_textChanged();
 
     void on_card1_2_clicked();
 
@@ -61,17 +54,15 @@ private slots:
     void on_selectBlue_clicked();
     void on_selectWhite_clicked();
 
-    void on_toolButton_clicked();
-
-
     void on_toolButton_triggered(QAction *arg1);
 
     void on_changeMan_clicked();
 
 private:
     Ui::gameInterface *ui;
-    Dialog *dialog;
-    Dialog2 *dialog2;
+    //Dialog *dialog;
+    pickCard *PickCard;
+    pickCoin *PickCoin;
     Table* table;
 
 
@@ -99,11 +90,11 @@ private:
     void textInit();//信息设置初始化，在构造函数中使用
 
 protected slots:
-   void DialogPurchaseSlot();
-   void DialogCancelSlot();
-   void dialog2OKSlot();
-   void dialog2CancelSlot();
-   void dialog2CancelTake(enum color);
+   void PickCard_PurchaseSlot();
+   void PickCard_CancelSlot();
+   void PICK_OKSlot();
+   void PICK_CancelSlot();
+   void PICK_UnTake(enum color);
 };
 
 #endif // GAMEINTERFACE_H
