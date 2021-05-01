@@ -41,22 +41,5 @@ void Card::GetPrice(int* p)const//·µ»ØPriceµÄÖ¸Õë
     }
 }
 
-ofstream& operator<<(ofstream& fout, Card& c)
-{
-    fout.write(reinterpret_cast<char*>(&c.PicAddr), sizeof(c.PicAddr));
-    fout.write(reinterpret_cast<char*>(&c.Rep), sizeof(c.Rep));
-    fout.write(reinterpret_cast<char*>(&c.Bonus), sizeof(c.Bonus));
-    fout.write(reinterpret_cast<char*>(&c.Price), sizeof(c.Price));
-    //fout.write(reinterpret_cast<char*>(&c.next), sizeof(c.next));
-    return fout;
-}
-ifstream& operator>>(ifstream& fin, Card& c)
-{
-    fin.read(reinterpret_cast<char*>(&c.PicAddr), sizeof(c.PicAddr));
-    fin.read(reinterpret_cast<char*>(&c.Rep), sizeof(c.Rep));
-    fin.read(reinterpret_cast<char*>(&c.Bonus), sizeof(c.Bonus));
-    fin.read(reinterpret_cast<char*>(&c.Price), sizeof(c.Price));
-    //fin.read(reinterpret_cast<char*>(&c.next), sizeof(c.next));
-    return fin;
-}
+
 

@@ -34,6 +34,7 @@ Table::Table()
     AlterMani(None);
     SetCurrNoble(-1);
     CurrPlayer = nullptr;
+    Status = Selecting;
     //qDebug()<<"Table created."<<endl;
 }
 Table::~Table()
@@ -100,6 +101,7 @@ bool Table::Init()
         Diamonds[i] = 5;
     }
     CreateCard();//生成卡链表
+    AlterStatus(Playing);
     //CreateNoble();
 
     //先有卡再有Avail
@@ -574,4 +576,48 @@ bool Table::CreateCard()
 bool Table::CreateNoble()
 {
 
+}
+
+
+bool Table::IfCount()
+{
+    for (int i=0;i<PlayerNum;i++) {
+        if(Players[i]->Rep>=15)
+            return true;
+    }
+    return false;
+}
+
+bool Table::IfCurrCount()
+{
+    if(CurrPlayer->Rep>=15)
+        return true;
+    return false;
+}
+
+bool Table::GetCount(Player **no1, Player **no2, int* num1, int* num2)
+{
+    if(Status!=Counting)
+        return false;
+    int highscore=0,No1Num=0,No2Num=0;
+    for(int i=0;i<PlayerNum;i++)//获取最高分
+    {
+        if(Players[i]->Rep>highscore)
+            highscore=Players[i]->Rep;
+    }
+    for(int i=0;i<PlayerNum;i++)//放入数组
+    {
+        if(Players[i]->Rep=highscore)
+        {
+            no1[No1Num]=Players[i];
+            No1Num++;
+        }
+        else {
+            no2[No2Num]=Players[i];
+            No2Num++;
+        }
+    }
+    *num1=No1Num;
+    *num2=No2Num;
+    return true;
 }

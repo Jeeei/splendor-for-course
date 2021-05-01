@@ -17,6 +17,7 @@ Player::Player()
     {
         Reserved[i] = nullptr;
     }
+    no=0;
 }
 Player::~Player()
 {
@@ -166,26 +167,6 @@ void Player::ShowReserved(Card** r, int length)
         r[i] = Reserved[i];
 }
 
-ofstream& operator<<(ofstream& fout, Player& p)
-{
-    fout.write(reinterpret_cast<char*>(&p.PicAddr), sizeof(p.PicAddr));
-    fout.write(reinterpret_cast<char*>(&p.Rep), sizeof(p.Rep));
-    fout.write(reinterpret_cast<char*>(&p.Cards), sizeof(p.Cards));
-    fout.write(reinterpret_cast<char*>(&p.Nobles), sizeof(p.Nobles));
-    fout.write(reinterpret_cast<char*>(&p.Diamonds), sizeof(p.Diamonds));
-    fout.write(reinterpret_cast<char*>(&p.Reserved), sizeof(p.Reserved));
-    return fout;
-}
-ifstream& operator>>(ifstream& fin, Player& p)
-{
-    fin.read(reinterpret_cast<char*>(&p.PicAddr), sizeof(p.PicAddr));
-    fin.read(reinterpret_cast<char*>(&p.Rep), sizeof(p.Rep));
-    fin.read(reinterpret_cast<char*>(&p.Cards), sizeof(p.Cards));
-    fin.read(reinterpret_cast<char*>(&p.Nobles), sizeof(p.Nobles));
-    fin.read(reinterpret_cast<char*>(&p.Diamonds), sizeof(p.Diamonds));
-    fin.read(reinterpret_cast<char*>(&p.Reserved), sizeof(p.Reserved));
-    return fin;
-}
 
 bool Player::SetImg(QString s)
 {

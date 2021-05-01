@@ -31,7 +31,8 @@ SOURCES += \
     dialog.cpp \
     dialog2.cpp \
     mainsurface.cpp \
-    rule.cpp
+    rule.cpp \
+    save.cpp
 
 HEADERS += \
     Splendor.h \

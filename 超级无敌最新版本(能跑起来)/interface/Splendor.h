@@ -2,9 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <QString>
+#include<windows.h>
 using namespace std;
 enum color { Red, Green, Blue, White, Black, Gold };//宝石颜色
 enum Manipulation { None, Take, Buy, Retain, SelectNoble };//5个操作暂无动作、拿宝石、买卡、扣卡、选贵族using namespace std;
+enum TableStatus{Selecting,Playing,Counting,Setting};//选择、游戏进行、结算、设置页面
 class Card //发展卡类
 {
     friend class Player;
@@ -69,12 +71,15 @@ public:
     bool SetImg(QString);
 
     //Get函数
+    QString GetAddr(){return PicAddr;}
+    int GetRep(){return Rep;}
+    int GetNo(){return no;}
     void GetDiamonds(int*);//返回宝石
     int GetDiamond(color co) { return Diamonds[co]; }
     void GetBonus(int*);//返回玩家拥有的红利数 /*Cards暂时只保存了颜色*/
     Card* GetReserved(int num) {
         if (num < 3)return Reserved[num];
-        else return NULL;
+        else return nullptr;
     }
     bool CanBuy(Card* card);//检查玩家能否买卡
     bool CanReserve()const;//检查玩家能否扣卡
@@ -97,6 +102,7 @@ protected:
     Noble* Nobles[5];//玩家拥有的贵族卡
     int Cards[5];//玩家拥有的发展卡/*暂时不储存卡片信息只保存不同颜色的数量*/
     Card* Reserved[3];
+    int no;//玩家排名
 
     int TotalDiamonds()const;//返回玩家拥有全部宝石数
 
@@ -105,6 +111,8 @@ protected:
 
 class Table
 {
+    friend ofstream& operator<<(ofstream&, Table&);//存取了所有数据，用于保存进度，初始化时不能直接调用
+    friend ifstream& operator>>(ifstream&, Table&);
 public:
     Table();
     ~Table();
@@ -168,6 +176,19 @@ public:
     int GetSetPlayerNum(){return sPlayerNum;}
     QString GetPlayerImg(int playernum);//参数范围1-当前玩家数
 
+    //8.status相关函数
+    void AlterStatus(TableStatus t){Status=t;}
+    bool IfCount();//返回判断是否有玩家到达15分
+    bool IfCurrCount();//返回当前玩家是否到达15分
+    bool GetCount(Player**,Player**,int* num1,int* num2);
+        //传入第一名和第二名的Player指针数组Player*[4]，num1,num2表示数组最终长度
+        //使用Player->GetAddr/Rep/No()获取玩家结算信息
+
+    //9.保存与重新读取
+    bool IfSaved();//返回是否有保存文件
+    bool Save();//保存当前进度
+    bool Load();//加载保存进度
+
     //未归类函数
     void ClearTakenDiamond();//重置已经拿了的宝石数组
 
@@ -185,6 +206,7 @@ private:
     QString sPlayerImg[4];//玩家图片
 
     //游戏过程临时变量
+    TableStatus Status;//当前页面
     Player* CurrPlayer;//当前玩家
     Manipulation CurrMani;//当前操作
     int CurrNoble;//玩家选中的贵族 0-4代表桌面上的贵族
