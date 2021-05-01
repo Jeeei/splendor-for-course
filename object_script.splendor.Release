@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\gameinterface.o
+./release\dialog.o
+./release\dialog2.o
+./release\mainsurface.o
+./release\rule.o
+./release\qrc_pictures.o
+./release\qrc_music.o
+./release\moc_gameinterface.o
+./release\moc_dialog.o
+./release\moc_dialog2.o
+./release\moc_mainsurface.o
+./release\moc_rule.o
+);

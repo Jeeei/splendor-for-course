@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/music">
+        <file>../背景音乐.wav</file>
+    </qresource>
+</RCC>
