@@ -32,7 +32,21 @@ gameInterface::gameInterface(QWidget *parent) :
 
     //轮到自己时，将对手高亮隐藏
     ui->oppo_turn->setVisible(false);//轮到对手时false改成true就行
+    ui->oppo_turn_2->setVisible(false);
 
+    //高亮
+    ui->highlight1_1->setVisible(false);
+    ui->highlight1_2->setVisible(false);
+    ui->highlight1_3->setVisible(false);
+    ui->highlight1_4->setVisible(false);
+    ui->highlight2_1->setVisible(false);
+    ui->highlight2_2->setVisible(false);
+    ui->highlight2_3->setVisible(false);
+    ui->highlight2_4->setVisible(false);
+    ui->highlight3_1->setVisible(false);
+    ui->highlight3_2->setVisible(false);
+    ui->highlight3_3->setVisible(false);
+    ui->highlight3_4->setVisible(false);
 }
 
 gameInterface::~gameInterface()
@@ -82,6 +96,8 @@ void gameInterface::on_card1_1_clicked()
 void gameInterface::on_card1_2_clicked()
 {
     //卡2的点击回馈
+    ui->oppo_turn_2->setVisible(true);
+    ui->oppo_turn->setVisible(true);//轮到对手时false改成true就行
 }
 
 void gameInterface::on_card1_3_clicked()

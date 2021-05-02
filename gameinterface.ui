@@ -662,8 +662,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="gradePeople1">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>630</y>
+     <x>130</x>
+     <y>620</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -757,7 +757,8 @@ background-color: rgb(207, 161, 147);</string>
    <property name="styleSheet">
     <string notr="true">background-color: rgba(255, 255, 254, 0);
 border-top-right-radius:65px;
-border-bottom-right-radius:65px;</string>
+border-bottom-right-radius:65px;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -767,31 +768,244 @@ border-bottom-right-radius:65px;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
+     <y>630</y>
+     <width>231</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/oppo_turn.png);
+border-top-right-radius:80px;
+border-bottom-right-radius:80px;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="oppo_turn_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
      <y>40</y>
      <width>201</width>
      <height>151</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/images/oppo_turn.png);</string>
+    <string notr="true">border-image: url(:/images/myturn.png);
+border-top-right-radius:75px;
+border-bottom-right-radius:75px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
   <zorder>background</zorder>
-  <zorder>card1_1</zorder>
-  <zorder>card1_2</zorder>
-  <zorder>card1_3</zorder>
-  <zorder>card1_4</zorder>
-  <zorder>card2_1</zorder>
-  <zorder>card2_2</zorder>
-  <zorder>card2_3</zorder>
-  <zorder>card2_4</zorder>
-  <zorder>card3_1</zorder>
-  <zorder>card3_2</zorder>
-  <zorder>card3_3</zorder>
-  <zorder>card3_4</zorder>
   <zorder>gold_num</zorder>
   <zorder>black_num</zorder>
   <zorder>red_num</zorder>
@@ -804,7 +1018,6 @@ border-bottom-right-radius:65px;</string>
   <zorder>selectGreen</zorder>
   <zorder>selectBlue</zorder>
   <zorder>selectWhite</zorder>
-  <zorder>gradePeople1</zorder>
   <zorder>changeMan</zorder>
   <zorder>money</zorder>
   <zorder>gold_have</zorder>
@@ -815,8 +1028,34 @@ border-bottom-right-radius:65px;</string>
   <zorder>red_have</zorder>
   <zorder>re</zorder>
   <zorder>oppo_turn</zorder>
+  <zorder>oppo_turn_2</zorder>
   <zorder>oppo1</zorder>
   <zorder>gradePeople2</zorder>
+  <zorder>gradePeople1</zorder>
+  <zorder>highlight1_1</zorder>
+  <zorder>card1_1</zorder>
+  <zorder>highlight1_2</zorder>
+  <zorder>card1_2</zorder>
+  <zorder>highlight1_3</zorder>
+  <zorder>highlight1_4</zorder>
+  <zorder>card1_3</zorder>
+  <zorder>card1_4</zorder>
+  <zorder>highlight2_1</zorder>
+  <zorder>highlight2_2</zorder>
+  <zorder>highlight2_3</zorder>
+  <zorder>highlight2_4</zorder>
+  <zorder>highlight3_1</zorder>
+  <zorder>highlight3_2</zorder>
+  <zorder>highlight3_3</zorder>
+  <zorder>highlight3_4</zorder>
+  <zorder>card2_1</zorder>
+  <zorder>card2_2</zorder>
+  <zorder>card2_3</zorder>
+  <zorder>card2_4</zorder>
+  <zorder>card3_1</zorder>
+  <zorder>card3_2</zorder>
+  <zorder>card3_3</zorder>
+  <zorder>card3_4</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

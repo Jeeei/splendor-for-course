@@ -31,5 +31,6 @@
         <file>../red_have.png</file>
         <file>../white_have.png</file>
         <file>../oppo_turn.png</file>
+        <file>../myturn.png</file>
     </qresource>
 </RCC>
