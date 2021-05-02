@@ -30,6 +30,11 @@ gameInterface::gameInterface(QWidget *parent) :
     opp1->setGeometry(0,40,183,151);
     opp1->hide();
 
+    //右弹菜单
+    rclick=new RightClick(this);
+    rclick->setGeometry(850,30,512,691);
+    rclick->hide();
+
     //轮到自己时，将对手高亮隐藏
     ui->oppo_turn->setVisible(false);//轮到对手时false改成true就行
     ui->oppo_turn_2->setVisible(false);
@@ -198,10 +203,11 @@ void gameInterface::on_black_have_textChanged()
 
 void gameInterface::on_re_clicked()
 {
-    mainSurface *mainS=new mainSurface;
-    //this->close();
-    mainS->show();
-    delete this;
+    rclick->show();
+    if((rclick->showMainsurface())==true)
+    {
+        delete this;
+    }
 }
 
 void gameInterface::on_oppo1_clicked()

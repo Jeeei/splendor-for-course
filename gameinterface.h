@@ -8,6 +8,7 @@
 #include "pickcoin.h"
 #include "pickcard.h"
 #include "opponent_have.h"
+#include "rightclick.h"
 
 namespace Ui {
 class gameInterface;
@@ -81,6 +82,7 @@ private:
     pickCoin *PickCoin;
     pickCard *PickCard;
     opponent_have * opp1;
+    RightClick *rclick;
 
     int color;
     int action;//用来表示行为，0表示拿，1表示买

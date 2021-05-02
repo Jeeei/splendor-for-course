@@ -32,5 +32,6 @@
         <file>../white_have.png</file>
         <file>../oppo_turn.png</file>
         <file>../myturn.png</file>
+        <file>../rightRuleFor2.png</file>
     </qresource>
 </RCC>
