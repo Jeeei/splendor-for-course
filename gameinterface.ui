@@ -1088,6 +1088,51 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QGraphicsView" name="graphicsView1">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 254, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87)</string>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="graphicsView2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 254, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87)</string>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="graphicsView3">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 254, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87)</string>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>gold_num</zorder>
   <zorder>black_num</zorder>
@@ -1144,6 +1189,9 @@ p, li { white-space: pre-wrap; }
   <zorder>green_card</zorder>
   <zorder>red_card</zorder>
   <zorder>white_card</zorder>
+  <zorder>graphicsView1</zorder>
+  <zorder>graphicsView2</zorder>
+  <zorder>graphicsView3</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

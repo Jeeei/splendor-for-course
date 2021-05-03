@@ -9,6 +9,7 @@
 #include "pickcard.h"
 #include "opponent_have.h"
 #include "rightclick.h"
+#include "koucard.h"
 
 namespace Ui {
 class gameInterface;
@@ -77,12 +78,15 @@ private slots:
 
     void on_oppo1_clicked();
 
+    void showKouCard1();//接收扣卡信号
+
 private:
     Ui::gameInterface *ui;
     pickCoin *PickCoin;
     pickCard *PickCard;
     opponent_have * opp1;
     RightClick *rclick;
+    kouCard *kcard;
 
     int color;
     int action;//用来表示行为，0表示拿，1表示买

@@ -26,6 +26,12 @@ gameInterface::gameInterface(QWidget *parent) :
     PickCard->setGeometry(600,160,271,351);
     PickCard->hide();
 
+    kcard=new kouCard(this);
+    kcard->setGeometry(1050,220,321,101);
+    kcard->hide();
+
+    connect(kcard, SIGNAL(IsKou()), this, SLOT(showKouCard1()));
+
     opp1=new opponent_have(this);
     opp1->setGeometry(0,40,183,151);
     opp1->hide();
@@ -57,6 +63,11 @@ gameInterface::gameInterface(QWidget *parent) :
 gameInterface::~gameInterface()
 {
     delete ui;
+}
+
+void gameInterface::showKouCard1()
+{
+    ui->graphicsView1->setStyleSheet("border-radius:18px;border-image:url(:/images/card/yellow-middle/1.png)");
 }
 
 void gameInterface::on_gold_num_textChanged()
@@ -119,6 +130,8 @@ void gameInterface::on_card1_4_clicked()
 void gameInterface::on_card2_1_clicked()
 {
     //卡5的点击回馈
+    kcard->show();
+    kcard->showKouCard();
 }
 
 void gameInterface::on_card2_2_clicked()
@@ -204,10 +217,6 @@ void gameInterface::on_black_have_textChanged()
 void gameInterface::on_re_clicked()
 {
     rclick->show();
-    if((rclick->showMainsurface())==true)
-    {
-        delete this;
-    }
 }
 
 void gameInterface::on_oppo1_clicked()
