@@ -21,6 +21,7 @@ Table::Table()
     }
     for (int i = 0; i < 4; i++)//初始化玩家指针
     {
+        sPlayers[i] = nullptr;
         Players[i] = nullptr;
         sPlayerImg[i] = "NULL";
     }
@@ -35,6 +36,8 @@ Table::Table()
     SetCurrNoble(-1);
     CurrPlayer = nullptr;
     Status = Selecting;
+    FirstPlayer = 1;
+    RandomFirst=true;
     //qDebug()<<"Table created."<<endl;
 }
 Table::~Table()
@@ -75,46 +78,6 @@ Table::~Table()
     }
 }
 
-bool Table::Start()
-{
-    PlayerNum = sPlayerNum;//确定玩家人数 //sPlayer在构造函数初始化为2
-    for(int i = 0;i < PlayerNum;i++)
-    {
-        Players[i] = new Player;
-    }
-    CurrPlayer = Players[0];//先手更改
-
-//    for (int i = 0;i<PlayerNum;i++)
-//    {
-//     Players[i]->SetImg(sPlayerImg[i]);
-//    }
-    //Players[0]->SetImg("border-image:url(:/images/bbb.png)");//强制给玩家设置头像
-    //Players[1]->SetImg("border-image:url(:/images/black.PNG)");
-    Init();
-    return true;
-}
-
-bool Table::Init()
-{
-    for(int i = 0; i < 6; i++)//初始化宝石数
-    {
-        Diamonds[i] = 5;
-    }
-    CreateCard();//生成卡链表
-    AlterStatus(Playing);
-    //CreateNoble();
-
-    //先有卡再有Avail
-    Avail();//初始化AvailCard数组和AvailNoble数组
-    return true;
-}
-
-QString Table::GetPlayerImg(int playernum)
-{
-    if(playernum < 1 || playernum > sPlayerNum)
-        return "NULL";
-    return sPlayerImg[playernum - 1];
-}
 
 void Table::Avail()//判断桌面上当前玩家可购买的卡 以及可以拜访的贵族
 {
@@ -575,6 +538,35 @@ bool Table::CreateCard()
 }
 bool Table::CreateNoble()
 {
+    char addr[10][50];
+    int price[10];
+    int num[6]={8};
+    Noble* ns[10];
+    ifstream c("nobles.dat", ios::in | ios::binary);
+    for (int i = 0;i < 10;i++)//20-40-30
+    {
+        c.read(reinterpret_cast<char*>(&addr[i]), sizeof(addr[i]));
+        c.read(reinterpret_cast<char*>(&price[i]), sizeof(price[i]));
+        for (int j = 5;j >= 0;j--)
+        {
+            num[j] = price[i] % 10;
+            price[i] -= num[j];
+            price[i] /= 10;
+        }
+        srand(time(0));
+        int sit = rand()%10;
+        while(ns[sit]!=nullptr)
+            sit = rand()%10;
+        ns[sit]->PicAddr=addr[i];
+        for(int k = 0; k < 6; k++)
+        {
+           ns[sit]->Condition[k] = num[k];
+        }
+    }
+    for(int i=0;i<PlayerNum+1;i++)//翻开人数+1个贵族
+    {
+        Nobles[i]=ns[i];
+    }
 
 }
 

@@ -69,6 +69,7 @@ public:
     bool AlterDiamond(color, int, int);//颜色，符号（+为1，-为-1），个数
     bool NobleCome(Noble*);//贵族到访
     bool SetImg(QString);
+    void SetName(QString str){Name =str;}
 
     //Get函数
     QString GetAddr(){return PicAddr;}
@@ -83,6 +84,7 @@ public:
     }
     bool CanBuy(Card* card);//检查玩家能否买卡
     bool CanReserve()const;//检查玩家能否扣卡
+    QString GetName(){return Name;}
 
 
 
@@ -96,7 +98,8 @@ public:
     QString GetAddress()const{return PicAddr;}//返回图片地址的函数
 
 protected:
-    QString PicAddr;
+    QString PicAddr;//玩家头像
+    QString Name;
     int Diamonds[6];//玩家拥有的宝石数
     int Rep;//玩家拥有的声望点数
     Noble* Nobles[5];//玩家拥有的贵族卡
@@ -116,9 +119,6 @@ class Table
 public:
     Table();
     ~Table();
-    bool Start();//与用户交互初始化 先生成2个Players并调用Init 后续补充其他选项
-    bool Init();//与用户无关初始化 可被Start()调用 生成固定的Cards和Nobles链表
-    //int Round();//回合进行函数，对每个玩家调用Operate()，并在之后进行相应判断操作
 
     bool NewCard(int level, int num);//翻开新的卡
     bool CreateCard();//洗牌(Init里面调用）
@@ -174,7 +174,20 @@ public:
 
     //7.初始化
     int GetSetPlayerNum(){return sPlayerNum;}
-    QString GetPlayerImg(int playernum);//参数范围1-当前玩家数
+    bool AlterPlayerNum(int);//参数传入+1/-1表明数量增减
+    QString GetPlayerPic(int no);//注意先判断Player是否存在
+    void AlterPlayerPic(int no);//将第no（1-4）个player的头像切换为下一个（注意不能重复）
+    QString GetPlayerName(int no){return sPlayers[no-1]->Name;}
+    void AlterPlayerName(int no, QString a){sPlayers[no-1]->Name=a;}
+    bool GetRandom(){return RandomFirst;}//只有当非随机时显示顺序
+    void AlterRandom();//被改为随机后生成次序，改为设定后玩家1为先手
+    int GetFirst(){return FirstPlayer;}
+    void AlterFirst(int no){FirstPlayer=no;}//将第no（1-4）个player设为先手
+
+    void InitSelect();//给玩家初始设置头像名字
+    bool Start();//与用户交互初始化 先生成2个Players并调用Init 后续补充其他选项
+    bool Init();//与用户无关初始化 可被Start()调用 生成固定的Cards和Nobles链表
+
 
     //8.status相关函数
     void AlterStatus(TableStatus t){Status=t;}
@@ -201,9 +214,12 @@ private:
     Player* Players[4];//玩家
     int PlayerNum;//玩家人数
 
-    //初始化临时变量 //还没接起来先不管
+    //初始化临时变量
     int sPlayerNum;//目前选择的玩家人数
-    QString sPlayerImg[4];//玩家图片
+    Player* sPlayers[4];//临时玩家
+    int sPlayersPic[4];//四个玩家目前图片编号(0-9)存放玩家头像的文件名Role.dat
+    bool RandomFirst;//玩家顺序是否随机
+    int FirstPlayer;//玩家编号为1-4、
 
     //游戏过程临时变量
     TableStatus Status;//当前页面

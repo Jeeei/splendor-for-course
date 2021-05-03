@@ -3,7 +3,7 @@ using namespace std;
 Noble::Noble()
 {
     PicAddr = "NULL";
-    Rep=0;
+    Rep=3;
     for(int i=0;i<6;i++)
         Condition[i]=0;
 }

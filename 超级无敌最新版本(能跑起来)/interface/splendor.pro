@@ -31,7 +31,9 @@ SOURCES += \
         main.cpp \
         gameinterface.cpp \
     mainsurface.cpp \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    save.cpp \
+    start.cpp
     rule.cpp \
     save.cpp
 =======
