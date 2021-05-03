@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RightClick</class>
+ <widget class="QFrame" name="RightClick">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>512</width>
+    <height>691</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#RightClick{
+border-radius:25px;
+border:3px solid rgb(249, 249, 0);
+background-image: url(:/images/rule_background.png);
+}</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::StyledPanel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Raised</enum>
+  </property>
+  <widget class="QLabel" name="menu">
+   <property name="geometry">
+    <rect>
+     <x>176</x>
+     <y>30</y>
+     <width>150</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Blackadder ITC&quot;;
+color:white;</string>
+   </property>
+   <property name="text">
+    <string>Menu</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="rule">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>220</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:15px;
+border:2px solid rgb(249, 249, 0);
+background-color: rgba(255, 255, 254, 0);
+font: italic 20pt &quot;Bodoni MT&quot;;
+color:white;</string>
+   </property>
+   <property name="text">
+    <string>Rule</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="resign">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>340</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:15px;
+border:2px solid rgb(249, 249, 0);
+background-color: rgba(255, 255, 254, 0);
+font: italic 20pt &quot;Bodoni MT&quot;;
+color:white;</string>
+   </property>
+   <property name="text">
+    <string>Resign</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="tryAgain">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>460</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:15px;
+border:2px solid rgb(249, 249, 0);
+background-color: rgba(255, 255, 254, 0);
+font: italic 20pt &quot;Bodoni MT&quot;;
+color:white;</string>
+   </property>
+   <property name="text">
+    <string>Try again</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="toolButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 48pt &quot;Algerian&quot;;
+color:white;
+background-color: rgba(255, 255, 254, 20);
+border-radius:25px;</string>
+   </property>
+   <property name="text">
+    <string>←</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
