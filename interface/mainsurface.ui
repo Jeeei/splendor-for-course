@@ -26,8 +26,8 @@
    <string>Form</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="pictures.qrc">
-    <normaloff>:/images/打开界面.png</normaloff>:/images/打开界面.png</iconset>
+   <iconset>
+    <normaloff>../StartInterface.png</normaloff>../StartInterface.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -37,8 +37,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1311</width>
-     <height>750</height>
+     <width>1400</width>
+     <height>800</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -47,14 +47,8 @@
      <height>750</height>
     </size>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>1311</width>
-     <height>750</height>
-    </size>
-   </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/images/打开界面.png);</string>
+    <string notr="true">border-image: url(:/images/StartInterface.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -144,8 +138,6 @@ p, li { white-space: pre-wrap; }
   <zorder>start_button</zorder>
   <zorder>rule_button</zorder>
  </widget>
- <resources>
-  <include location="pictures.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

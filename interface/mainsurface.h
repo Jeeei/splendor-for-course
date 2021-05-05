@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "gameinterface.h"
+#include "rule.h"
 
 namespace Ui {
 class mainSurface;
@@ -21,8 +22,11 @@ private slots:
 
     void on_rule_button_clicked();
 
+    void MainSurfaceResignSlot();
 private:
     Ui::mainSurface *ui;
+    gameInterface *gameSurface;
+    Rule *r;
 };
 
 #endif // MAINSURFACE_H

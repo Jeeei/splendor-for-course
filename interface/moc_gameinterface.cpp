@@ -1,18 +1,19 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'gameinterface.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../splendor/gameinterface.h"
+#include <memory>
+#include "../../interface/gameinterface.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'gameinterface.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.0. It"
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -98,7 +99,7 @@ QT_MOC_LITERAL(36, 737, 13) // "dialog2OKSlot"
 static const uint qt_meta_data_gameInterface[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
       35,   14, // methods
@@ -188,7 +189,7 @@ static const uint qt_meta_data_gameInterface[] = {
 void gameInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        gameInterface *_t = static_cast<gameInterface *>(_o);
+        auto *_t = static_cast<gameInterface *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_card1_1_clicked(); break;
@@ -231,10 +232,14 @@ void gameInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
     }
 }
 
-const QMetaObject gameInterface::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_gameInterface.data,
-      qt_meta_data_gameInterface,  qt_static_metacall, nullptr, nullptr}
-};
+QT_INIT_METAOBJECT const QMetaObject gameInterface::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_gameInterface.data,
+    qt_meta_data_gameInterface,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *gameInterface::metaObject() const
@@ -246,7 +251,7 @@ void *gameInterface::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_gameInterface.stringdata0))
-        return static_cast<void*>(const_cast< gameInterface*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 

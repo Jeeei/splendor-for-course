@@ -6,37 +6,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1311</width>
-    <height>750</height>
+    <width>1400</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1311</width>
-    <height>750</height>
+    <width>1400</width>
+    <height>800</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1311</width>
-    <height>750</height>
+    <width>1400</width>
+    <height>800</height>
    </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
   </property>
   <property name="windowTitle">
    <string>gameInterface</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="pictures.qrc">
+   <iconset>
     <normaloff>:/images/打开界面.png</normaloff>:/images/打开界面.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#gameInterface{
+border-image: url(:/images/background.png);
+}</string>
   </property>
   <widget class="QPushButton" name="card1_1">
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>50</y>
+     <y>80</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -55,8 +60,8 @@ border-image: url(:/images/card/blue-high/1.png);
   <widget class="QPushButton" name="card1_2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>50</y>
+     <x>490</x>
+     <y>80</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -72,8 +77,8 @@ border-image: url(:/images/card/blue-high/2.png);</string>
   <widget class="QPushButton" name="card1_3">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>50</y>
+     <x>670</x>
+     <y>80</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -89,8 +94,8 @@ border-image: url(:/images/card/blue-high/3.png);</string>
   <widget class="QPushButton" name="card1_4">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>50</y>
+     <x>860</x>
+     <y>80</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -107,7 +112,7 @@ border-image: url(:/images/card/blue-high/4.png);</string>
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>234</y>
+     <y>270</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -123,8 +128,8 @@ border-image: url(:/images/card/yellow-middle/1.png);</string>
   <widget class="QPushButton" name="card2_2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>234</y>
+     <x>490</x>
+     <y>270</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -140,8 +145,8 @@ border-image: url(:/images/card/yellow-middle/2.png);</string>
   <widget class="QPushButton" name="card2_3">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>234</y>
+     <x>670</x>
+     <y>270</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -157,8 +162,8 @@ border-image: url(:/images/card/yellow-middle/3.png);</string>
   <widget class="QPushButton" name="card2_4">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>234</y>
+     <x>860</x>
+     <y>270</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -175,7 +180,7 @@ border-image: url(:/images/card/yellow-middle/4.png);</string>
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>420</y>
+     <y>470</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -191,8 +196,8 @@ border-image: url(:/images/card/green-low/1.png);</string>
   <widget class="QPushButton" name="card3_2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>420</y>
+     <x>490</x>
+     <y>470</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -208,8 +213,8 @@ border-image: url(:/images/card/green-low/2.png);</string>
   <widget class="QPushButton" name="card3_3">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>420</y>
+     <x>670</x>
+     <y>470</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -225,8 +230,8 @@ border-image: url(:/images/card/green-low/3.png);</string>
   <widget class="QPushButton" name="card3_4">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>420</y>
+     <x>860</x>
+     <y>470</y>
      <width>141</width>
      <height>171</height>
     </rect>
@@ -243,7 +248,7 @@ border-image: url(:/images/card/green-low/4.png);
   <widget class="QTextBrowser" name="gold_num">
    <property name="geometry">
     <rect>
-     <x>970</x>
+     <x>1030</x>
      <y>110</y>
      <width>41</width>
      <height>41</height>
@@ -265,8 +270,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="black_num">
    <property name="geometry">
     <rect>
-     <x>970</x>
-     <y>190</y>
+     <x>1030</x>
+     <y>200</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -287,8 +292,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="red_num">
    <property name="geometry">
     <rect>
-     <x>980</x>
-     <y>280</y>
+     <x>1040</x>
+     <y>310</y>
      <width>51</width>
      <height>41</height>
     </rect>
@@ -309,8 +314,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="green_num">
    <property name="geometry">
     <rect>
-     <x>980</x>
-     <y>370</y>
+     <x>1050</x>
+     <y>410</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -331,8 +336,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="blue_num">
    <property name="geometry">
     <rect>
-     <x>990</x>
-     <y>480</y>
+     <x>1060</x>
+     <y>510</y>
      <width>41</width>
      <height>41</height>
     </rect>
@@ -353,8 +358,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="white_num">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>600</y>
+     <x>1070</x>
+     <y>630</y>
      <width>41</width>
      <height>41</height>
     </rect>
@@ -372,46 +377,18 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="background">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1311</width>
-     <height>750</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>1311</width>
-     <height>750</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>1311</width>
-     <height>750</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/images/background.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="money">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>670</y>
-     <width>451</width>
+     <x>480</x>
+     <y>710</y>
+     <width>501</width>
      <height>91</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/images/bb.png);
-border-radius:8px;</string>
+border-radius:20px;</string>
    </property>
    <property name="text">
     <string/>
@@ -420,8 +397,8 @@ border-radius:8px;</string>
   <widget class="QTextBrowser" name="white_have">
    <property name="geometry">
     <rect>
-     <x>500</x>
-     <y>690</y>
+     <x>535</x>
+     <y>730</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -439,11 +416,11 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#ffffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="blue_nave">
+  <widget class="QTextBrowser" name="blue_have">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>690</y>
+     <x>635</x>
+     <y>730</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -464,8 +441,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="green_have">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>690</y>
+     <x>730</x>
+     <y>730</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -486,8 +463,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="red_have">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>690</y>
+     <x>830</x>
+     <y>730</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -508,8 +485,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="black_have">
    <property name="geometry">
     <rect>
-     <x>850</x>
-     <y>690</y>
+     <x>930</x>
+     <y>730</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -530,10 +507,10 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>650</y>
-     <width>101</width>
-     <height>91</height>
+     <x>390</x>
+     <y>710</y>
+     <width>91</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -547,8 +524,8 @@ border-radius:35px;</string>
   <widget class="QTextBrowser" name="gold_have">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>700</y>
+     <x>360</x>
+     <y>750</y>
      <width>51</width>
      <height>61</height>
     </rect>
@@ -569,8 +546,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="selectBlack">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>140</y>
+     <x>1070</x>
+     <y>150</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -588,8 +565,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="selectRed">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>230</y>
+     <x>1070</x>
+     <y>240</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -607,8 +584,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="selectGreen">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>330</y>
+     <x>1080</x>
+     <y>350</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -626,8 +603,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="selectBlue">
    <property name="geometry">
     <rect>
-     <x>1030</x>
-     <y>440</y>
+     <x>1090</x>
+     <y>460</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -645,8 +622,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="selectWhite">
    <property name="geometry">
     <rect>
-     <x>1040</x>
-     <y>540</y>
+     <x>1110</x>
+     <y>580</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -664,24 +641,31 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextBrowser" name="gradePeople2">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>40</y>
-     <width>41</width>
-     <height>41</height>
+     <x>120</x>
+     <y>20</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:rgba(130, 87, 103,0.8);
 border-radius:20px</string>
    </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:22pt; font-weight:600; color:#ffffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </widget>
   <widget class="QTextBrowser" name="gradePeople1">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>600</y>
-     <width>41</width>
-     <height>41</height>
+     <x>130</x>
+     <y>620</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -689,27 +673,21 @@ border-radius:20px</string>
 border-radius:20px
 </string>
    </property>
-  </widget>
-  <widget class="QToolButton" name="toolButton">
-   <property name="geometry">
-    <rect>
-     <x>1080</x>
-     <y>90</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>我要拿币</string>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:22pt; font-weight:600; color:#ffffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QToolButton" name="re">
    <property name="geometry">
     <rect>
-     <x>1250</x>
+     <x>1340</x>
      <y>0</y>
      <width>61</width>
-     <height>81</height>
+     <height>141</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -724,26 +702,490 @@ border-radius:30px;</string>
   <widget class="QToolButton" name="changeMan">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>600</y>
+     <x>670</x>
+     <y>650</y>
      <width>121</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;华文彩云&quot;;
-border-radius:10px;
-background-color: rgb(207, 161, 147);</string>
+    <string notr="true">font: 14pt &quot;华文彩云&quot;;
+border-radius:15px;
+background-color: qlineargradient(spread: pad, x1: 0, y1: 0, x2: 0, y2: 1,\ stop : 0 rgba(255, 255, 255, 200),\ stop : 0.5 rgba(0, 100, 255, 255),\ stop : 1 rgba(255, 255, 255, 200));
+color:rgb(255,255,255);</string>
    </property>
    <property name="text">
     <string>结束回合</string>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1400</width>
+     <height>800</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1400</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1400</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/background.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="oppo1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>40</y>
+     <width>201</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 254, 0);
+border-top-right-radius:65px;
+border-bottom-right-radius:65px;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="oppo_turn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>632</y>
+     <width>227</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/oppo_turn.png);
+border-top-right-radius:80px;
+border-bottom-right-radius:80px;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="oppo_turn_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>40</y>
+     <width>197</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/myturn.png);
+border-top-right-radius:75px;
+border-bottom-right-radius:75px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight1_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>78</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight2_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>268</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_1">
+   <property name="geometry">
+    <rect>
+     <x>308</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_2">
+   <property name="geometry">
+    <rect>
+     <x>488</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_3">
+   <property name="geometry">
+    <rect>
+     <x>668</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="highlight3_4">
+   <property name="geometry">
+    <rect>
+     <x>858</x>
+     <y>468</y>
+     <width>145</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 5px solid qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="black_card">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>720</y>
+     <width>42</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(99, 99, 99, 255), stop:1 rgba(55, 55, 55, 255));
+border-radius:15px;
+border:1px solid white;</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="blue_card">
+   <property name="geometry">
+    <rect>
+     <x>591</x>
+     <y>720</y>
+     <width>42</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(112, 198, 255, 255), stop:1 rgba(80, 141, 182, 255));
+border:1px solid white;
+border-radius:15px;
+</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="green_card">
+   <property name="geometry">
+    <rect>
+     <x>688</x>
+     <y>720</y>
+     <width>42</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(155, 255, 162, 255), stop:1 rgba(0, 213, 0, 255));
+border-radius:15px;
+border:1px solid white;</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="red_card">
+   <property name="geometry">
+    <rect>
+     <x>783</x>
+     <y>720</y>
+     <width>42</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(234, 189, 189, 255), stop:1 rgba(247, 90, 90, 255));
+border-radius:15px;
+border:1px solid white;</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="white_card">
+   <property name="geometry">
+    <rect>
+     <x>494</x>
+     <y>720</y>
+     <width>42</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(240, 240, 240);
+border-radius:15px;
+border:1px solid black;</string>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="reserved1">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="reserved2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="reserved3">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>540</y>
+     <width>71</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 80);
+border-radius:18px;
+border:2px solid rgb(176, 176, 87);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>background</zorder>
+  <zorder>gold_num</zorder>
+  <zorder>black_num</zorder>
+  <zorder>red_num</zorder>
+  <zorder>green_num</zorder>
+  <zorder>blue_num</zorder>
+  <zorder>white_num</zorder>
+  <zorder>label</zorder>
+  <zorder>selectBlack</zorder>
+  <zorder>selectRed</zorder>
+  <zorder>selectGreen</zorder>
+  <zorder>selectBlue</zorder>
+  <zorder>selectWhite</zorder>
+  <zorder>changeMan</zorder>
+  <zorder>money</zorder>
+  <zorder>gold_have</zorder>
+  <zorder>green_have</zorder>
+  <zorder>black_have</zorder>
+  <zorder>blue_have</zorder>
+  <zorder>white_have</zorder>
+  <zorder>red_have</zorder>
+  <zorder>re</zorder>
+  <zorder>oppo_turn</zorder>
+  <zorder>oppo_turn_2</zorder>
+  <zorder>oppo1</zorder>
+  <zorder>gradePeople2</zorder>
+  <zorder>gradePeople1</zorder>
+  <zorder>highlight1_1</zorder>
   <zorder>card1_1</zorder>
+  <zorder>highlight1_2</zorder>
   <zorder>card1_2</zorder>
+  <zorder>highlight1_3</zorder>
+  <zorder>highlight1_4</zorder>
   <zorder>card1_3</zorder>
   <zorder>card1_4</zorder>
+  <zorder>highlight2_1</zorder>
+  <zorder>highlight2_2</zorder>
+  <zorder>highlight2_3</zorder>
+  <zorder>highlight2_4</zorder>
+  <zorder>highlight3_1</zorder>
+  <zorder>highlight3_2</zorder>
+  <zorder>highlight3_3</zorder>
+  <zorder>highlight3_4</zorder>
   <zorder>card2_1</zorder>
   <zorder>card2_2</zorder>
   <zorder>card2_3</zorder>
@@ -752,34 +1194,16 @@ background-color: rgb(207, 161, 147);</string>
   <zorder>card3_2</zorder>
   <zorder>card3_3</zorder>
   <zorder>card3_4</zorder>
-  <zorder>gold_num</zorder>
-  <zorder>black_num</zorder>
-  <zorder>red_num</zorder>
-  <zorder>green_num</zorder>
-  <zorder>blue_num</zorder>
-  <zorder>white_num</zorder>
-  <zorder>money</zorder>
-  <zorder>white_have</zorder>
-  <zorder>blue_nave</zorder>
-  <zorder>green_have</zorder>
-  <zorder>red_have</zorder>
-  <zorder>black_have</zorder>
-  <zorder>label</zorder>
-  <zorder>gold_have</zorder>
-  <zorder>selectBlack</zorder>
-  <zorder>selectRed</zorder>
-  <zorder>selectGreen</zorder>
-  <zorder>selectBlue</zorder>
-  <zorder>selectWhite</zorder>
-  <zorder>gradePeople2</zorder>
-  <zorder>gradePeople1</zorder>
-  <zorder>toolButton</zorder>
-  <zorder>re</zorder>
-  <zorder>changeMan</zorder>
+  <zorder>black_card</zorder>
+  <zorder>blue_card</zorder>
+  <zorder>green_card</zorder>
+  <zorder>red_card</zorder>
+  <zorder>white_card</zorder>
+  <zorder>reserved1</zorder>
+  <zorder>reserved2</zorder>
+  <zorder>reserved3</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="pictures.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

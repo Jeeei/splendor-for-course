@@ -1,20 +1,95 @@
 <RCC>
     <qresource prefix="/images">
-        <file>../card/blue-high/1.png</file>
-        <file>../card/blue-high/2.png</file>
-        <file>../card/blue-high/3.png</file>
-        <file>../card/blue-high/4.png</file>
-        <file>../card/blue-high/5.png</file>
-        <file>../card/green-low/1.png</file>
-        <file>../card/green-low/2.png</file>
-        <file>../card/green-low/3.png</file>
-        <file>../card/green-low/4.png</file>
-        <file>../card/green-low/5.png</file>
-        <file>../card/yellow-middle/1.png</file>
-        <file>../card/yellow-middle/2.png</file>
-        <file>../card/yellow-middle/3.png</file>
-        <file>../card/yellow-middle/4.png</file>
-        <file>../card/yellow-middle/5.png</file>
+    <file>../card/blue-high/01.png</file>
+    <file>../card/blue-high/02.png</file>
+    <file>../card/blue-high/03.png</file>
+    <file>../card/blue-high/04.png</file>
+    <file>../card/blue-high/05.png</file>
+    <file>../card/blue-high/06.png</file>
+    <file>../card/blue-high/07.png</file>
+    <file>../card/blue-high/08.png</file>
+    <file>../card/blue-high/09.png</file>
+    <file>../card/blue-high/10.png</file>
+    <file>../card/blue-high/11.png</file>
+    <file>../card/blue-high/12.png</file>
+    <file>../card/blue-high/13.png</file>
+    <file>../card/blue-high/14.png</file>
+    <file>../card/blue-high/15.png</file>
+    <file>../card/blue-high/16.png</file>
+    <file>../card/blue-high/17.png</file>
+    <file>../card/blue-high/18.png</file>
+    <file>../card/blue-high/19.png</file>
+    <file>../card/blue-high/20.png</file>
+    <file>../card/green-low/01.png</file>
+    <file>../card/green-low/02.png</file>
+    <file>../card/green-low/03.png</file>
+    <file>../card/green-low/04.png</file>
+    <file>../card/green-low/05.png</file>
+    <file>../card/green-low/06.png</file>
+    <file>../card/green-low/07.png</file>
+    <file>../card/green-low/08.png</file>
+    <file>../card/green-low/09.png</file>
+    <file>../card/green-low/10.png</file>
+    <file>../card/green-low/11.png</file>
+    <file>../card/green-low/12.png</file>
+    <file>../card/green-low/13.png</file>
+    <file>../card/green-low/14.png</file>
+    <file>../card/green-low/15.png</file>
+    <file>../card/green-low/16.png</file>
+    <file>../card/green-low/17.png</file>
+    <file>../card/green-low/18.png</file>
+    <file>../card/green-low/19.png</file>
+    <file>../card/green-low/20.png</file>
+    <file>../card/green-low/21.png</file>
+    <file>../card/green-low/22.png</file>
+    <file>../card/green-low/23.png</file>
+    <file>../card/green-low/24.png</file>
+    <file>../card/green-low/25.png</file>
+    <file>../card/green-low/26.png</file>
+    <file>../card/green-low/27.png</file>
+    <file>../card/green-low/28.png</file>
+    <file>../card/green-low/29.png</file>
+    <file>../card/green-low/30.png</file>
+    <file>../card/green-low/31.png</file>
+    <file>../card/green-low/32.png</file>
+    <file>../card/green-low/33.png</file>
+    <file>../card/green-low/34.png</file>
+    <file>../card/green-low/35.png</file>
+    <file>../card/green-low/36.png</file>
+    <file>../card/green-low/37.png</file>
+    <file>../card/green-low/38.png</file>
+    <file>../card/green-low/39.png</file>
+    <file>../card/green-low/40.png</file>
+    <file>../card/yellow-middle/01.png</file>
+    <file>../card/yellow-middle/02.png</file>
+    <file>../card/yellow-middle/03.png</file>
+    <file>../card/yellow-middle/04.png</file>
+    <file>../card/yellow-middle/05.png</file>
+    <file>../card/yellow-middle/06.png</file>
+    <file>../card/yellow-middle/07.png</file>
+    <file>../card/yellow-middle/08.png</file>
+    <file>../card/yellow-middle/09.png</file>
+    <file>../card/yellow-middle/10.png</file>
+    <file>../card/yellow-middle/11.png</file>
+    <file>../card/yellow-middle/12.png</file>
+    <file>../card/yellow-middle/13.png</file>
+    <file>../card/yellow-middle/14.png</file>
+    <file>../card/yellow-middle/15.png</file>
+    <file>../card/yellow-middle/16.png</file>
+    <file>../card/yellow-middle/17.png</file>
+    <file>../card/yellow-middle/18.png</file>
+    <file>../card/yellow-middle/19.png</file>
+    <file>../card/yellow-middle/20.png</file>
+    <file>../card/yellow-middle/21.png</file>
+    <file>../card/yellow-middle/22.png</file>
+    <file>../card/yellow-middle/23.png</file>
+    <file>../card/yellow-middle/24.png</file>
+    <file>../card/yellow-middle/25.png</file>
+    <file>../card/yellow-middle/26.png</file>
+    <file>../card/yellow-middle/27.png</file>
+    <file>../card/yellow-middle/28.png</file>
+    <file>../card/yellow-middle/29.png</file>
+    <file>../card/yellow-middle/30.png</file>
         <file>../background.png</file>
         <file>../bb.png</file>
         <file>../bbb.png</file>
@@ -23,7 +98,16 @@
         <file>../green.PNG</file>
         <file>../red.PNG</file>
         <file>../white.PNG</file>
-        <file>../打开界面.png</file>
+        <file>../StartInterface.png</file>
         <file>../rule_background.png</file>
+        <file>../black_have.png</file>
+        <file>../blue_have.png</file>
+        <file>../green_have.png</file>
+        <file>../red_have.png</file>
+        <file>../white_have.png</file>
+        <file>../myturn.png</file>
+        <file>../oppo_turn.png</file>
+        <file>../rightRuleFor2.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>
