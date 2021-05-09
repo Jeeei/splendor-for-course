@@ -2,6 +2,7 @@
 #define CHOOSESURFACE_H
 
 #include <QWidget>
+#include"Splendor.h"
 
 namespace Ui {
 class chooseSurface;
@@ -41,6 +42,7 @@ private slots:
 
 private:
     Ui::chooseSurface *ui;
+    Table* table;
 };
 
 #endif // CHOOSESURFACE_H

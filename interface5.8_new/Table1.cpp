@@ -22,7 +22,8 @@ Table::Table()
     for (int i = 0; i < 4; i++)//初始化玩家指针
     {
         Players[i] = nullptr;
-        sPlayerImg[i] = "NULL";
+        sPlayers[i] = nullptr;
+        sPlayersPic[i] = i; //头像设置为最开始四个
     }
     for(int i = 0; i < 6; i++)
     {
@@ -35,6 +36,8 @@ Table::Table()
     AlterMani(None);
     SetCurrNoble(-1);
     CurrPlayer = nullptr;
+    RandomFirst = true;
+    FirstPlayer = 1;
     //qDebug()<<"Table created."<<endl;
 }
 Table::~Table()
@@ -46,6 +49,8 @@ Table::~Table()
         {
             delete Players[i];
             Players[i] = nullptr;
+            delete sPlayers[i];
+            sPlayers[i] = nullptr;
         }
     }
     for (int i = 0; i < 3; i++)//删除场上发展卡
@@ -82,19 +87,23 @@ bool Table::Start()
 {
     AlterStatus(Selecting);
     PlayerNum = sPlayerNum;//确定玩家人数 //sPlayer在构造函数初始化为2
+    for (int i=0;i<PlayerNum;i++)
+    {
+        sPlayers[i]->SetImg(GetPlayerPic(i));//写入头像，名字已经写入
+    }
     for(int i = 0;i < PlayerNum;i++)
     {
         if(Players[i] == nullptr)
             Players[i] = new Player;
     }
+    for(int no = 1;no <= PlayerNum;no++)//将构建的player放入次序中
+    {
+        if(no>=GetFirst())
+            Players[no-GetFirst()]=sPlayers[no-1];
+        else
+            Players[no-GetFirst()+sPlayerNum]=sPlayers[no-1];
+    }
     CurrPlayer = Players[0];//先手更改
-
-//    for (int i = 0;i<PlayerNum;i++)
-//    {
-//     Players[i]->SetImg(sPlayerImg[i]);
-//    }
-    Players[0]->SetImg("border-image:url(:/images/myturn.png)");//强制给玩家设置头像
-    Players[1]->SetImg("border-image:url(:/images/oppo_turn.png)");
     Init();
     return true;
 }
@@ -114,11 +123,56 @@ bool Table::Init()
     return true;
 }
 
-QString Table::GetPlayerImg(int playernum)
+bool Table::AlterPlayerNum(int a)
 {
-    if(playernum < 1 || playernum > sPlayerNum)
+    int num = sPlayerNum+a;
+    if(num<2||num>4)
+        return false;
+    PlayerNum = num;
+    AlterIfRandom();
+    AlterIfRandom();//先手顺序更改
+    return true;
+}
+
+//"background-color:rgba(255,255,255,80)"
+QString Table::GetPlayerPic(int no)
+{
+    if(no>sPlayerNum)
         return "background-color:rgba(255,255,255,80)";
-    return sPlayerImg[playernum - 1];
+    QString pic = "border-image:url(:images/role/1.png";
+    pic[30]=sPlayersPic[no];//将图片路径字符串中图片名字位置的字符改成所储存的图片序号(0-9)
+    return pic;
+}
+
+void Table::AlterPlayerPic(int no)
+{
+    int sno = (sPlayersPic[no]+1)%10;
+    while(1)
+    {
+        int i=0;
+        for(i=0;i<sPlayerNum;i++)
+        {
+            if(sno==sPlayersPic[i])
+                break;
+        }
+        if(i==sPlayerNum)
+        {
+            sPlayersPic[no] = sno;
+            return;
+        }
+        sno = (sno+1)%10;
+    }
+}
+
+void Table::AlterIfRandom()
+{
+    IfRandom = !IfRandom;
+    if(!IfRandom)
+        FirstPlayer=1;
+    else {
+        srand(time(0));
+        FirstPlayer = rand()%PlayerNum+1;
+    }
 }
 
 void Table::Avail()//判断桌面上当前玩家可购买的卡 以及可以拜访的贵族
