@@ -22,7 +22,7 @@ Table::Table()
     for (int i = 0; i < 4; i++)//初始化玩家指针
     {
         Players[i] = nullptr;
-        sPlayers[i] = nullptr;
+        sPlayers[i] = "NULL";
         sPlayersPic[i] = i; //头像设置为最开始四个
     }
     for(int i = 0; i < 6; i++)

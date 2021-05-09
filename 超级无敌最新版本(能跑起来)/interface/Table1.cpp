@@ -23,7 +23,6 @@ Table::Table()
     {
         sPlayers[i] = nullptr;
         Players[i] = nullptr;
-        sPlayerImg[i] = "NULL";
     }
     for(int i = 0; i < 6; i++)
     {
