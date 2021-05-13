@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>pickCard</class>
+ <widget class="QFrame" name="pickCard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>270</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#pickCard{
+background-image: url(:/images/rule_background.png);
+border-radius:75px;
+border:3px solid rgb(204, 204, 101)
+}</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::StyledPanel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Raised</enum>
+  </property>
+  <widget class="QToolButton" name="cardShow">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>190</width>
+     <height>250</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:15px;
+background-color: rgba(255, 255, 254, 50);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="purchase">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>285</y>
+     <width>170</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Elephant</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:15px;
+font: italic 18pt &quot;Elephant&quot;;
+background-color: qlineargradient(spread: pad, x1: 0, y1: 0, x2: 0, y2: 1,\ stop : 0 rgba(255, 255, 255, 200),\ stop : 0.6 rgba(0, 130, 255, 255),\ stop : 1 rgba(255, 255, 255, 200));
+color:rgb(255,255,255);</string>
+   </property>
+   <property name="text">
+    <string>Purchase</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
