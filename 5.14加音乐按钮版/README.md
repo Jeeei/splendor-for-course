@@ -1,1 +1,0 @@
-# splendor-for-course
